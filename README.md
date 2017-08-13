@@ -1,6 +1,6 @@
 # Procesamiento y Análisis de Datos
 
-Módulo _Procesamiento y Análisis de Datos_ del diplomado en Visualización de Datos de la Pontificia Universidad Católica de Chile.
+Módulo _Procesamiento y Análisis de Datos_ del diplomado en [Visualización de Datos](http://diseno.uc.cl/curso/diplomado-en-visualizacion-de-datos/) de la Pontificia Universidad Católica de Chile.
 
 En este repositorio están disponible el material de las clases de cátedra y la clase auxiliar del diplomado. Están disponibles las diapositivas y los scripts para desarrollar los ejercicios vistos en el transcurso del módulo.
 
@@ -12,6 +12,30 @@ En este repositorio están disponible el material de las clases de cátedra y la
 ## Clase Auxiliar
 
 * _Pendiente_
+
+## Contenidos
+
+1. Conceptos
+  1. Introducción muy básica a las estructuras de datos
+  2. Tidy Data
+  3. Tercera forma normal de Codd
+2. Repaso de Hojas de Cálculo con Google Sheets
+  1. Uso de funciones básicas: sum, sumif, vlookup
+  2. Filtros, quitar duplicados, pegado especial y formatos
+3. R y RStudio
+  1. Instalación de R y RStudio
+  2. Manejo básico de la consola de R y paneles de RStudio
+  3. Instalación de paquetes de R
+  4. Uso básico de los paquetes del Tidyverse
+  5. Gramática de verbos y de gráficos
+  6. Operadores lógicos
+  7. Limpieza de datos
+4. Bases de datos
+  1. Nociones básicas de bases de datos y llaves
+  2. Tablas relacionales
+  3. Manejo de grandes volúmenes de datos
+  4. Sintaxis y consultas SQL
+  5. Integración de consultas SQL y manipulación de datos en R
 
 ## Resumen de Licencia Creative Commons
 
