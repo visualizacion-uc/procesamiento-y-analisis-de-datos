@@ -308,7 +308,7 @@ mpg %>%
 
 ## Tarea Nº3
 
-Vamos a usar el archivo [lecture1_officesupplies.xlsx](http://pacha.datawheel.us/teaching/diplomado_uc/datasets/lecture1_officesupplies.xlsx) y lo vamos a descargar y leer desde R.
+Vamos a usar el archivo [lecture1_officesupplies.xlsx](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/datasets/lecture1_officesupplies.xlsx) y lo vamos a descargar y leer desde R.
 
 Pasos a seguir:
 
@@ -336,7 +336,7 @@ try(dir.create(folder))
 
 if(!file.exists(file)) {
   download.file(
-    "http://pacha.datawheel.us/teaching/diplomado_uc/datasets/lecture1_officesupplies.xlsx",
+    "https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/datasets/lecture1_officesupplies.xlsx",
     file)
 }
 ```
@@ -424,7 +424,7 @@ officesupplies = officesupplies %>%
 
 ## Tarea Nº4
 
-Vamos a usar el archivo [lecture1_copper.csv](http://pacha.datawheel.us/teaching/diplomado_uc/datasets/lecture1_copper.csv) y lo vamos a descargar y leer desde R.
+Vamos a usar el archivo [lecture1_copper.csv](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/datasets/lecture1_copper.csv) y lo vamos a descargar y leer desde R.
 
 Pasos a seguir:
 
@@ -455,7 +455,7 @@ try(dir.create(folder))
 
 if(!file.exists(file)) {
   download.file(
-    "http://pacha.datawheel.us/teaching/diplomado_uc/datasets/lecture1_copper.csv",
+    "https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/datasets/lecture1_copper.csv",
     file)
 }
 ```

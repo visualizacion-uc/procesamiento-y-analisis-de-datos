@@ -22,7 +22,7 @@ knit : slidify::knit2slides
 
 Abre RStudio Server, ve a File &rarr; New Project, crea un nuevo proyecto con tu nombre en un nuevo directorio (e.g *mauricio_vargas_clase_2*) y crea un nuevo script.
 
-Vamos a usar el archivo [lecture2_flights.zip](http://pacha.datawheel.us/teaching/diplomado_uc/datasets/lecture2_flights.zip) y lo vamos a descargar al directorio "datasets" y leer desde R.
+Vamos a usar el archivo [lecture2_flights.zip](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/datasets/lecture2_flights.zip) y lo vamos a descargar al directorio "datasets" y leer desde R.
 
 Pasos a seguir:
 
@@ -61,7 +61,7 @@ try(dir.create(folder))
 
 if(!file.exists(zip)) {
   download.file(
-    "http://pacha.datawheel.us/teaching/diplomado_uc/datasets/lecture2_flights.zip",
+    "https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/datasets/lecture2_flights.zip",
     zip)
 }
 
