@@ -15,14 +15,16 @@ En este repositorio están disponible el material de las clases de cátedra y la
 
 ## Contenidos
 
-1. Conceptos
+### Conceptos
   1. Introducción muy básica a las estructuras de datos
   2. Tidy Data
   3. Tercera forma normal de Codd
-2. Repaso de Hojas de Cálculo con Google Sheets
+
+### Repaso de Hojas de Cálculo con Google Sheets
   1. Uso de funciones básicas: sum, sumif, vlookup
   2. Filtros, quitar duplicados, pegado especial y formatos
-3. R y RStudio
+
+### R y RStudio
   1. Instalación de R y RStudio
   2. Manejo básico de la consola de R y paneles de RStudio
   3. Instalación de paquetes de R
@@ -30,7 +32,8 @@ En este repositorio están disponible el material de las clases de cátedra y la
   5. Gramática de verbos y de gráficos
   6. Operadores lógicos
   7. Limpieza de datos
-4. Bases de datos
+
+### Bases de datos
   1. Nociones básicas de bases de datos y llaves
   2. Tablas relacionales
   3. Manejo de grandes volúmenes de datos
