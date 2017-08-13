@@ -1,6 +1,6 @@
 # Procesamiento y Análisis de Datos
 
-Módulo _Procesamiento y Análisis de Datos_ del diplomado de Visualización de Datos de la Pontificia Universidad Católica de Chile.
+Módulo _Procesamiento y Análisis de Datos_ del diplomado en Visualización de Datos de la Pontificia Universidad Católica de Chile.
 
 En este repositorio están disponible el material de las clases de cátedra y la clase auxiliar del diplomado. Están disponibles las diapositivas y los scripts para desarrollar los ejercicios vistos en el transcurso del módulo.
 
@@ -95,7 +95,7 @@ a. ___License grant.___
 
    4. __Media and formats; technical modifications allowed.__ The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.
 
-    5. __Downstream recipients.__
+   5. __Downstream recipients.__
 
         A. __Offer from the Licensor – Licensed Material.__ Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.
 
