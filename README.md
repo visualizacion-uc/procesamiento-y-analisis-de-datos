@@ -4,6 +4,12 @@ Módulo _Procesamiento y Análisis de Datos_ del diplomado en [Visualización de
 
 En este repositorio están disponible el material de las clases de cátedra y la clase auxiliar del diplomado. Están disponibles las diapositivas y los scripts para desarrollar los ejercicios vistos en el transcurso del módulo.
 
+## Equipo Docente
+
+Profesor de cátedra: Mauricio Vargas Sepúlveda
+
+Ayudantes: Maximiliano Diener, Teresa Valdivia y José Vinés
+
 ## Clases
 
 * [Clase 1](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/lectures/lecture1.html)
