@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Procesamiento y Análisis de Datos 2</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Procesamiento y Análisis de Datos 2">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="../libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="../libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="../libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="../libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="../libraries/frameworks/io2012/js/slides" 
+    src="../libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="../assets/img/escudo_uc.svg">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Procesamiento y Análisis de Datos 2</h1>
+    <h2>Mini-curso de R para usuarios de Excel</h2>
+    <p>Profesor: Mauricio Vargas Sepúlveda<br/>Ayudantes: Maximiliano Diener, Teresa Valdivia, José Vinés<br/><br/><br/>Pontificia Universidad Católica de Chile</p>
+  </hgroup>
+  <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-nc-sa/4.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png'>
+    </a>
+  </footer>
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h1>Repaso clase anterior</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Abre RStudio Server, ve a File &rarr; New Project, crea un nuevo proyecto con tu nombre en un nuevo directorio (e.g <em>mauricio_vargas_clase_2</em>) y crea un nuevo script.</p>
+
+<p>Vamos a usar el archivo <a href="http://pacha.datawheel.us/teaching/diplomado_uc/datasets/lecture2_flights.zip">lecture2_flights.zip</a> y lo vamos a descargar al directorio &quot;datasets&quot; y leer desde R.</p>
+
+<p>Pasos a seguir:</p>
+
+<ol>
+<li>Cargar los paquetes de la clase anterior</li>
+<li>Crear el directorio &quot;datasets&quot; y descargar el archivo si y sólo si este no está en el directorio &quot;datasets&quot;</li>
+<li>Leer el archivo CSV usando la función <code>read_csv</code> (una función del paquete <code>readr</code>) para obtener
+3.1. Los vuelos del día 1 de enero
+3.2. Los vuelos del día 25 de diciembre</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Desarrollo repaso</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Paso 1:</h3>
+
+<pre><code class="r">if (!require(&quot;pacman&quot;)) install.packages(&quot;pacman&quot;)
+
+p_load(readr,readxl,dplyr,ggplot2,forcats)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Desarrollo repaso</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Paso 2:</h3>
+
+<pre><code class="r">folder = &quot;datasets/&quot;
+zip    = paste0(folder,&quot;lecture2_flights.zip&quot;)
+csv    = paste0(folder,&quot;lecture2_flights.csv&quot;)
+
+try(dir.create(folder))
+
+if(!file.exists(zip)) {
+  download.file(
+    &quot;http://pacha.datawheel.us/teaching/diplomado_uc/datasets/lecture2_flights.zip&quot;,
+    zip)
+}
+
+if(!file.exists(csv)) {
+  system(paste0(&quot;7z e &quot;,zip,&quot; -oc:&quot;,folder))
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Desarrollo repaso</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Paso 3:</h3>
+
+<pre><code class="r">flights = read_csv(csv)
+filter(flights, month == 1, day == 1)
+filter(flights, month == 12, day == 25)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h1>Operadores lógicos</h1>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="img/transform-logical.png" alt="transform-logical.png" style="width: 100%;"/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Tarea Nº1</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Sobre el dataset del ejemplo de repaso obten los vuelos de los meses noviembre o diciembre de las siguientes formas:</p>
+
+<ol>
+<li>Usando el operador &quot;ó&quot; (<code>|</code>)</li>
+<li>Usando el operador &quot;pertenece&quot; (<code>%in%</code>)</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Desarrollo Tarea Nº1</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">### forma 1
+filter(flights, month == 11 | month == 12)
+
+### forma 2
+filter(flights, month %in% c(11,12))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Tarea Nº2</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Sobre el dataset del ejemplo de repaso obten los vuelos que no estuvieron atrasados por más de dos horas en la llegada o la partida de las siguientes formas:</p>
+
+<ol>
+<li>Usando una negación explícita (e.g. &quot;no está en el grupo de los que tienen más de 2 horas de atraso&quot;) con el operador &quot;negación&quot; (<code>!</code>)</li>
+<li>Filtrando directamente con el operador &quot;ó&quot; <code>|</code></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Desarrollo Tarea Nº2</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">### forma 1
+filter(flights, !(arr_delay &gt; 120 | dep_delay &gt; 120))
+
+### forma 2
+filter(flights, arr_delay &lt;= 120, dep_delay &lt;= 120)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h1>Manejo de elementos vacíos</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Los elementos vacíos, <code>NAs</code> (&quot;no disponibles&quot;), generan un &quot;contagio&quot; cada vez que se efectúa una operación sobre un tibble (tabla/dataset), vector, matriz o cualquier elemento que maneja R. Cualquier operación que involucre un elemento vacío dará por resultado un elemento vacío.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Tarea Nº3</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Evalúa las siguientes expresiones:</p>
+
+<ol>
+<li><code>NA &gt; 5</code></li>
+<li><code>10 == NA</code></li>
+<li><code>NA + 10</code></li>
+<li><code>NA / 2</code></li>
+<li><code>NA == NA</code></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Tarea Nº4</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Crea una tabla que se llame <code>df</code> a partir del vector <code>c(1, NA, 3)</code></p>
+
+<ol>
+<li>El nombre asignado a la columna debe ser <code>x</code></li>
+<li>Filtra los elementos vacíos</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Desarrollo Tarea Nº4</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">df = tibble(x = c(1, NA, 3)) %&gt;% 
+  filter(!is.na(x))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Tarea Nº5</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Crea una tabla que muestre los promedio de los vuelos entrantes. Sobre esa tabla vamos a graficar.</p>
+
+<p>Pasos a seguir:</p>
+
+<ol>
+<li>Crear una tabla para los vuelos no cancelados seleccionando las columnas <code>tailnum</code> y <code>arr_delay</code> filtrando los vuelos de llegada con tiempo distinto de <code>NA</code></li>
+<li>Sobre la tabla anterior crear la tabla que se pide agrupando por identificador de viaje (<code>tailnum</code>) y calculando el promedio de <code>arr_delay</code></li>
+<li>Crea un gráfico polinomial con la cuenta de vuelos salientes según atraso</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Desarrollo Tarea Nº5</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Paso 1:</h3>
+
+<pre><code class="r">not_cancelled = flights %&gt;% 
+  select(tailnum,arr_delay) %&gt;% 
+  filter(!is.na(arr_delay))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Desarrollo Tarea Nº5</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Paso 2:</h3>
+
+<pre><code class="r">delays = not_cancelled %&gt;% 
+  group_by(tailnum) %&gt;% 
+  summarise(delay = mean(arr_delay))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Desarrollo Tarea Nº5</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Paso 3:</h3>
+
+<pre><code class="r">ggplot(delays, aes(x = delay)) + 
+  geom_freqpoly(binwidth = 10) +
+  ggtitle(&quot;Conteo de vuelos salientes según atraso&quot;, 
+          subtitle = &quot;Luego de filtrar y agrupar&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Tarea Nº6</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Crea una tabla que muestre los atrasos y la distancia de los vuelos salientes. Sobre esa tabla vamos a graficar.</p>
+
+<p>Pasos a seguir:</p>
+
+<ol>
+<li>En la tabla <code>flights</code> selecciona las columnas <code>dep_delay</code>, <code>distance</code> y <code>dest</code>, agrupa por destinos (<code>dest</code>) y resume la tabla creando las variables
+
+<ol>
+<li><code>count</code>: cuenta de vuelos por destino</li>
+<li><code>dist</code>: media de <code>distance</code> quitando los <code>NA</code></li>
+<li><code>delay</code>: media de <code>arr_delay</code> quitando los <code>NA</code></li>
+<li>Filtra los destinos con un conteo mayor a 20</li>
+</ol></li>
+<li>Crea un gráfico de puntos agregando línea de tendencia</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Desarrollo Tarea Nº6</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Paso 1:</h3>
+
+<pre><code class="r">by_dest = flights %&gt;% 
+  select(dep_delay,distance,dest) %&gt;% 
+  group_by(dest) %&gt;% 
+  summarise(count = n(),
+            dist = mean(distance, na.rm = TRUE),
+            delay = mean(dep_delay, na.rm = TRUE)) %&gt;% 
+  filter(count &gt; 20)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Desarrollo Tarea Nº6</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Paso 2:</h3>
+
+<pre><code class="r">ggplot(by_dest, aes(x = dist, y = delay)) +
+  geom_point(aes(size = count), alpha = 1/3) +
+  geom_smooth(se = FALSE) +
+  ggtitle(&quot;Atrasos vs distancia en vuelos salientes&quot;, 
+          subtitle = &quot;Luego de filtrar y agrupar&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h1>R + SQL = &#x2665;</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Veremos algunos ejemplos básicos de SQL (<strong>S</strong>tructured <strong>Q</strong>uery <strong>L</strong>anguage), un lenguaje de programación de bases de datos, antiguo al igual que S y cuya primera versión es de 1974.</p>
+
+<p>Ventajas</p>
+
+<ul>
+<li>Ampliamente difundido</li>
+<li>Uso eficiente de recursos</li>
+<li>Se integra con <code>dplyr</code></li>
+</ul>
+
+<p>Desventajas</p>
+
+<ul>
+<li>Sintaxis compleja</li>
+<li>No sirve para analizar datos directamente</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h1>R + SQL = &#x2665;</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Vamos a trabajar con <code>nycflights13</code> ya que contiene tablas relacionales.</p>
+
+<p><img src="img/relational-nycflights.png" alt="relational-nycflights.png" style="height: 100%;"/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>Tarea Nº7</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Vamos a crear una base de datos SQL.</p>
+
+<p>Pasos a seguir:</p>
+
+<ol>
+<li>Cargar los paquetes <code>DBI</code> y <code>nycflights13</code></li>
+<li>Copia las tablas de <code>nycflights13</code> a una nueva base de datos</li>
+<li>Cierra la conexión a la base de datos</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Desarrollo Tarea Nº7</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">p_load(DBI,nycflights13)
+
+nycflights13_db = dbConnect(RSQLite::SQLite(), &quot;datasets/lecture2_nycflights13.sqlite&quot;)
+
+dbWriteTable(nycflights13_db, &quot;flights&quot;, flights)
+dbWriteTable(nycflights13_db, &quot;airports&quot;, airports)
+dbWriteTable(nycflights13_db, &quot;planes&quot;, planes)
+dbWriteTable(nycflights13_db, &quot;weather&quot;, weather)
+dbWriteTable(nycflights13_db, &quot;airlines&quot;, airlines)
+
+dbDisconnect(nycflights13_db)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Tarea Nº8</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Vamos a usar la base recientemente creada. </p>
+
+<p>Obtén  lo siguiente:</p>
+
+<ul>
+<li>Una lista de las tablas en la base de datos</li>
+<li>Las primeras cinco observaciones de la tabla <code>flights</code></li>
+<li>Las observaciones que contienen <em>Delta</em> en la tabla <code>airlines</code></li>
+</ul>
+
+<p>Lo anterior se debe limitar a sintaxis SQL.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>Desarrollo Tarea Nº8</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">nycflights13_db = dbConnect(RSQLite::SQLite(), &quot;datasets/lecture2_nycflights13.sqlite&quot;)
+
+dbListTables(nycflights13_db)
+
+dbGetQuery(nycflights13_db, &#39;SELECT * FROM flights LIMIT 5&#39;)
+
+dbGetQuery(nycflights13_db, &#39;SELECT * FROM airlines WHERE name LIKE &quot;%Delta%&quot;&#39;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h1>Joins</h1>
+  </hgroup>
+  <article data-timings="">
+    <p><code>dplyr</code> provee varias formas de unir tablas</p>
+
+<ul>
+<li><code>left_join</code> &rarr; similar a <code>BUSCARV()</code> en Excel</li>
+<li><code>right_join</code></li>
+<li><code>full_join</code></li>
+<li><code>inner_join</code></li>
+<li><code>anti_join</code></li>
+</ul>
+
+<p>Por ahora nos centraremos en <code>left_join</code>.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>Lógica de una unión</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="img/join-venn.png" alt="join-venn.png" style="width: 100%;"/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>¿Cómo operan los <em>outer_join</em>?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><code>left_join</code>, <code>right_join</code> y <code>full_join</code> son <em>outer joins</em>, conectan dos tablas según sus elementos comunes</p>
+
+<p><img src="img/left-join.png" alt="left-join.png" style="width: 100%;"/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>¿Cómo operan los <em>outer_join</em>?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="img/right-join.png" alt="right-join.png" style="width: 100%;"/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h2>¿Cómo operan los <em>outer_join</em>?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="img/full-join.png" alt="full-join.png" style="width: 100%;"/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-32" style="background:;">
+  <hgroup>
+    <h1>Conceptos muy básicos de llaves</h1>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Una <em>llave primaria</em> es un identificador único de una observación en una tabla (e.g. <code>tailnum</code> en la tabla <code>flights</code>)</li>
+<li>Una <em>llave foránea</em> identifica una observación en otra tabla (e.g. <code>carrier</code> en la tabla <code>flights</code> está en correspondencia con <code>carrier</code> en la tabla <code>airlines</code>)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:;">
+  <hgroup>
+    <h2>¿Por qué importan las llaves?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Si tengo dos tablas, por ejemplo <code>clientes</code> con la columna <code>ID</code> que contiene los RUT y <code>ventas</code> con la columna <code>RUT</code> para identificar al cliente, el join que debo hacer es </li>
+</ul>
+
+<pre><code class="r">clientes %&gt;% left_join(ventas, by = c(&quot;ID&quot; = &quot;ventas&quot;))
+</code></pre>
+
+<ul>
+<li>Si en ambas tablas los RUT están en la columna <code>ID</code> y además no hay otras columnas comunes el join se puede simplificar</li>
+</ul>
+
+<pre><code class="r">clientes %&gt;% left_join(ventas)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-34" style="background:;">
+  <hgroup>
+    <h2>Tarea Nº9</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>A partir de tu base de datos obtén las tablas <code>flights</code> y <code>airlines</code>. A partir de ambas tablas genera una tabla con el conteo de vuelos por año, mes, día y aerolínea mostrando los nombres completos.</p>
+
+<p>Sobre lo anterior genera otra tabla filtrando los vuelos de <em>Delta Air Lines Inc.</em> y grafica sus vuelos por mes.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-35" style="background:;">
+  <hgroup>
+    <h2>Desarrollo Tarea Nº9</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">flights_db = as_tibble(dbReadTable(nycflights13_db, &quot;flights&quot;))
+airlines_db = as_tibble(dbReadTable(nycflights13_db, &quot;airlines&quot;))
+dbDisconnect(nycflights13_db)
+
+summary_by_airline = flights_db %&gt;% 
+  select(year,month,day,carrier) %&gt;% 
+  left_join(airlines_db) %&gt;% 
+  select(-carrier) %&gt;% 
+  rename(airline = name) %&gt;% 
+  group_by(year,month,day,airline) %&gt;% 
+  summarise(flights = n())
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-36" style="background:;">
+  <hgroup>
+    <h2>Desarrollo Tarea Nº9</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">summary_delta = summary_by_airline %&gt;% 
+  ungroup() %&gt;% 
+  filter(airline == &quot;Delta Air Lines Inc.&quot;) %&gt;% 
+  group_by(year,month,airline) %&gt;% 
+  summarise(flights = sum(flights))
+
+ggplot(summary_delta, aes(x = month, y = flights)) +
+  geom_bar(stat = &quot;identity&quot;) +
+  scale_x_discrete(limits = c(1:12)) +
+  ggtitle(&quot;Vuelos por mes de aerolínea Delta&quot;, 
+          subtitle = &quot;Luego de agrupar&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-37" style="background:;">
+  <hgroup>
+    <h2>Tarea Nº10</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>La sintaxis de SQL es compleja pero eficiente. Ahora vamos a explorar una base de datos grande y pasar a <code>dplyr</code> exactamente lo que necesitamos.</p>
+
+<p><code>lecture2_hs92.sqlite</code> contiene una parte del <em>Observatorio de la Complejidad Económica</em></p>
+
+<p>No vamos a descargar la base de datos sino que leer directamente del disco duro.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-38" style="background:;">
+  <hgroup>
+    <h2>Tarea Nº10</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="img/relational-hs92.svg" alt="relational-hs92.svg" style="height: 100%;"/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-39" style="background:;">
+  <hgroup>
+    <h2>Tarea Nº10</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>En la base de datos:</p>
+
+<ul>
+<li><code>yod_hs92_6</code> (6.7 GB) contiene 205,576,981 filas y 6 columnas, demora 00:11:48 en abrir en un servidor Intel Xeon x4 2.27GHz con 32 GB de RAM</li>
+<li><code>yo_hs92_6</code> (0.6 GB) contiene 14,555,662 filas y 7 columnas, demora 00:00:32 en abrir en el mismo servidor</li>
+<li><code>country_names</code> (7 KB) contiene 263 filas y 3 columnas, demora &lt; 1 seg en abrir en el mismo servidor</li>
+<li><code>products_hs_92</code> (337 KB) contiene 6282 filas y 5 columnas, demora &lt; 1 seg en abrir en el mismo servidor</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-40" style="background:;">
+  <hgroup>
+    <h2>Tarea Nº10</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>En la tabla <code>yod_hs92_6</code> explora las primeras cinco observaciones y luego crea la tabla <code>chl_chn_2014</code> extrayendo únicamente las observaciones que contienen <em>chl</em> en la columna <code>origin</code>, <em>chn</em> en la columna <code>dest</code> y 2014 en la columna <code>year</code> &larr; toma ~ 00:00:25</p>
+
+<p>Luego a partir de la tabla:</p>
+
+<ul>
+<li>Explora los tipos de columnas presentes</li>
+<li>Haz las transformaciones necesarias</li>
+<li>Busca el grupo de cada producto en la tabla <code>products_hs_92</code></li>
+<li>Suma el total exportado por grupo y ordena descendentemente</li>
+<li>Crea un gráfico de barras horizontal con el ranking de grupos</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-41" style="background:;">
+  <hgroup>
+    <h2>Desarrollo Tarea Nº10</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">hs92_db = dbConnect(RSQLite::SQLite(), &quot;datasets/lecture2_hs92.sqlite&quot;)
+dbListTables(hs92_db)
+
+chl_chn_2014 = as_tibble(dbGetQuery(hs92_db, 
+  &#39;SELECT * FROM yod_hs92_6 WHERE origin = &quot;chl&quot; AND dest = &quot;chn&quot; AND year = &quot;2014&quot;&#39;))
+products_hs_92 = as_tibble(dbGetQuery(hs92_db, &#39;SELECT * FROM products_hs_92&#39;))
+
+exports_groups = chl_chn_2014 %&gt;% 
+  mutate(export_val = as.integer(export_val)) %&gt;% 
+  left_join(products_hs_92) %&gt;% 
+  select(group_name,export_val) %&gt;% 
+  group_by(group_name) %&gt;% 
+  summarise(export_val = sum(export_val, na.rm = TRUE)) %&gt;% 
+  ungroup() %&gt;% 
+  arrange(desc(export_val))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-42" style="background:;">
+  <hgroup>
+    <h2>Desarrollo Tarea Nº10</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">exports_groups %&gt;% 
+  group_by(group_name) %&gt;% 
+  mutate(pos = cumsum(0.5 * as.numeric(export_val))) %&gt;% 
+  ggplot(aes(y = export_val, x = reorder(group_name, export_val))) + 
+  geom_col(fill = &quot;#30729C&quot;, alpha = 0.7) + 
+  coord_flip() +
+  geom_text(aes(y = pos, label = format(export_val, big.mark = &quot;,&quot;)), 
+            colour = &quot;black&quot;, size = 3, show.legend = F) + 
+  labs(title = &quot;Composici\u00f3n de las exportaciones a China ($)&quot;, 
+       subtitle = &quot;Fuente: Observatorio de la Complejidad Econ\u00f3mica&quot;,
+       x = &quot;Grupo de producto&quot;, 
+       y = &quot;D\u00f3lares&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Repaso clase anterior'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Desarrollo repaso'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Desarrollo repaso'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Desarrollo repaso'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Operadores lógicos'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Tarea Nº1'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Desarrollo Tarea Nº1'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Tarea Nº2'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Desarrollo Tarea Nº2'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Manejo de elementos vacíos'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Tarea Nº3'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Tarea Nº4'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Desarrollo Tarea Nº4'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Tarea Nº5'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Desarrollo Tarea Nº5'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Desarrollo Tarea Nº5'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Desarrollo Tarea Nº5'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Tarea Nº6'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Desarrollo Tarea Nº6'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Desarrollo Tarea Nº6'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='R + SQL = &#x2665;'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='R + SQL = &#x2665;'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Tarea Nº7'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Desarrollo Tarea Nº7'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Tarea Nº8'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Desarrollo Tarea Nº8'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Joins'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Lógica de una unión'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='¿Cómo operan los <em>outer_join</em>?'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='¿Cómo operan los <em>outer_join</em>?'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='¿Cómo operan los <em>outer_join</em>?'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Conceptos muy básicos de llaves'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='¿Por qué importan las llaves?'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Tarea Nº9'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='Desarrollo Tarea Nº9'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Desarrollo Tarea Nº9'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='Tarea Nº10'>
+         37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='Tarea Nº10'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='Tarea Nº10'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='Tarea Nº10'>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='Desarrollo Tarea Nº10'>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='Desarrollo Tarea Nº10'>
+         42
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="../libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
