@@ -2,4 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
-scripts/datasets/*
+datasets/lecture2_hs92.sqlite
+scripts/datasets/lecture2_hs92.sqlite
