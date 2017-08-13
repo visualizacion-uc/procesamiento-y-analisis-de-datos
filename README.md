@@ -7,7 +7,7 @@ En este repositorio están disponible el material de las clases de cátedra y la
 ## Clases
 
 * [Clase 1](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/lectures/lecture1.html)
-* [Clase 1](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/lectures/lecture1.html)
+* [Clase 2](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/lectures/lecture2.html)
 
 ## Clase Auxiliar
 
