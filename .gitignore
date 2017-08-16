@@ -4,3 +4,5 @@
 .Ruserdata
 datasets/lecture2_hs92.sqlite
 scripts/datasets/lecture2_hs92.sqlite
+.DS_Store
+.httr-oauth
