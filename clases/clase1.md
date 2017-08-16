@@ -308,7 +308,7 @@ mpg %>%
 
 ## Tarea Nº3
 
-Vamos a usar el archivo [lecture1_officesupplies.xlsx](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/datasets/lecture1_officesupplies.xlsx) y lo vamos a descargar y leer desde R.
+Vamos a usar el archivo [lecture1_officesupplies.xlsx](https://goo.gl/Hj1H6n) y lo vamos a descargar y leer desde R.
 
 Pasos a seguir:
 
@@ -336,7 +336,7 @@ try(dir.create(folder))
 
 if(!file.exists(file)) {
   download.file(
-    "https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/datasets/lecture1_officesupplies.xlsx",
+    "https://goo.gl/Hj1H6n",
     file)
 }
 ```
@@ -424,7 +424,7 @@ officesupplies = officesupplies %>%
 
 ## Tarea Nº4
 
-Vamos a usar el archivo [lecture1_copper.csv](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/datasets/lecture1_copper.csv) y lo vamos a descargar y leer desde R.
+Vamos a usar el archivo [lecture1_copper.csv](https://goo.gl/GsnrdP) y lo vamos a descargar y leer desde R.
 
 Pasos a seguir:
 
@@ -455,7 +455,7 @@ try(dir.create(folder))
 
 if(!file.exists(file)) {
   download.file(
-    "https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/datasets/lecture1_copper.csv",
+    "https://goo.gl/GsnrdP",
     file)
 }
 ```

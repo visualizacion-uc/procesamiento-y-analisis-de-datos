@@ -14,7 +14,13 @@ Ayudantes: Maximiliano Diener, Teresa Valdivia y José Vinés
 
 * [Clase 1](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/clases/clase1.html)
 * [Clase 2](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/clases/clase2.html)
-* [Clase 3](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/clases/clase3.html)
+
+## Guía de ejercicios
+
+* [Guía de ejercicios(html)](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/clases/guia-de-ejercicios.html)
+* [Guía de ejercicios (rmd)](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/clases/guia-de-ejercicios.Rmd)
+* [Guía de ejercicios (html)](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/clases/guia-de-ejercicios-respuestas.html)
+* [Guía de ejercicios (rmd)](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/clases/guia-de-ejercicios-respuestas.Rmd)
 
 ## Contenidos
 
