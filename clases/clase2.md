@@ -1,5 +1,5 @@
 ---
-title: "Procesamiento y Análisis de Datos 2"
+title: "Procesamiento y Análisis de Datos (Clase 2)"
 subtitle: "Mini-curso de R para usuarios de Excel"
 author1: "Profesor: Mauricio Vargas Sepúlveda"
 author2: "Ayudantes: Maximiliano Diener, Teresa Valdivia, José Vinés"
@@ -16,21 +16,7 @@ mode: selfcontained # {standalone, draft}
 knit : slidify::knit2slides
 ---
 
-```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
-library(knitr) 
-options(width = 100)
-opts_chunk$set(cache = F, message = F, error = F, warning = F, comment = NA, tidy = F, fig.path = 'fig/', fig.align = 'center')
 
-options(xtable.type = 'html')
-knit_hooks$set(inline = function(x) {
-  if(is.numeric(x)) {
-    round(x, getOption('digits'))
-  } else {
-    paste(as.character(x), collapse = ', ')
-  }
-})
-knit_hooks$set(plot = knitr:::hook_plot_html)
-```
 
 # Repaso clase anterior
 
@@ -52,7 +38,8 @@ Pasos a seguir:
 
 ### Paso 1:
 
-```{r repaso_1_1, eval = FALSE}
+
+```r
 if (!require("pacman")) install.packages("pacman")
 
 p_load(readr,readxl,dplyr,ggplot2,forcats)
@@ -64,7 +51,8 @@ p_load(readr,readxl,dplyr,ggplot2,forcats)
 
 ### Paso 2:  
 
-```{r repaso_1_2, eval = FALSE}
+
+```r
 folder = "datasets/"
 zip    = paste0(folder,"lecture2_flights.zip")
 csv    = paste0(folder,"lecture2_flights.csv")
@@ -88,7 +76,8 @@ if(!file.exists(csv)) {
 
 ### Paso 3:
 
-```{r repaso_1_3, eval = FALSE}
+
+```r
 flights = read_csv(csv)
 filter(flights, month == 1, day == 1)
 filter(flights, month == 12, day == 25)
@@ -113,7 +102,8 @@ Sobre el dataset del ejemplo de repaso obten los vuelos de los meses noviembre o
 
 ## Desarrollo Tarea Nº1
 
-```{r tarea_1, eval = FALSE}
+
+```r
 ### forma 1
 filter(flights, month == 11 | month == 12)
 
@@ -134,7 +124,8 @@ Sobre el dataset del ejemplo de repaso obten los vuelos que no estuvieron atrasa
 
 ## Desarrollo Tarea Nº2
 
-```{r tarea_2, eval = FALSE}
+
+```r
 ### forma 1
 filter(flights, !(arr_delay > 120 | dep_delay > 120))
 
@@ -173,7 +164,8 @@ Crea una tabla que se llame `df` a partir del vector `c(1, NA, 3)`
 
 ## Desarrollo Tarea Nº4
 
-```{r tarea_4, eval = FALSE}
+
+```r
 df = tibble(x = c(1, NA, 3)) %>% 
   filter(!is.na(x))
 ```
@@ -196,7 +188,8 @@ Pasos a seguir:
 
 ### Paso 1:
 
-```{r tarea_5_1, eval = FALSE}
+
+```r
 not_cancelled = flights %>% 
   select(tailnum,arr_delay) %>% 
   filter(!is.na(arr_delay))
@@ -208,7 +201,8 @@ not_cancelled = flights %>%
 
 ### Paso 2:
 
-```{r tarea_5_2, eval = FALSE}
+
+```r
 delays = not_cancelled %>% 
   group_by(tailnum) %>% 
   summarise(delay = mean(arr_delay))
@@ -220,7 +214,8 @@ delays = not_cancelled %>%
 
 ### Paso 3:
 
-```{r tarea_5_3, eval = FALSE}
+
+```r
 ggplot(delays, aes(x = delay)) + 
   geom_freqpoly(binwidth = 10) +
   ggtitle("Conteo de vuelos salientes según atraso", 
@@ -248,7 +243,8 @@ Pasos a seguir:
 
 ### Paso 1:
 
-```{r tarea_6_1, eval = FALSE}
+
+```r
 by_dest = flights %>% 
   select(dep_delay,distance,dest) %>% 
   group_by(dest) %>% 
@@ -264,7 +260,8 @@ by_dest = flights %>%
 
 ### Paso 2:
 
-```{r tarea_6_2, eval = FALSE}
+
+```r
 ggplot(by_dest, aes(x = dist, y = delay)) +
   geom_point(aes(size = count), alpha = 1/3) +
   geom_smooth(se = FALSE) +
@@ -313,7 +310,8 @@ Pasos a seguir:
 
 ## Desarrollo Tarea Nº7
 
-```{r tarea_7, eval = FALSE}
+
+```r
 p_load(DBI,nycflights13)
 
 nycflights13_db = dbConnect(RSQLite::SQLite(), "datasets/lecture2_nycflights13.sqlite")
@@ -345,7 +343,8 @@ Lo anterior se debe limitar a sintaxis SQL.
 
 ## Desarrollo Tarea Nº8
 
-```{r tarea_8, eval = FALSE}
+
+```r
 nycflights13_db = dbConnect(RSQLite::SQLite(), "datasets/lecture2_nycflights13.sqlite")
 
 dbListTables(nycflights13_db)
@@ -408,13 +407,15 @@ Por ahora nos centraremos en `left_join`.
 
 * Si tengo dos tablas, por ejemplo `clientes` con la columna `ID` que contiene los RUT y `ventas` con la columna `RUT` para identificar al cliente, el join que debo hacer es 
 
-```{r llaves_1, eval = FALSE}
+
+```r
 clientes %>% left_join(ventas, by = c("ID" = "ventas"))
 ```
 
 * Si en ambas tablas los RUT están en la columna `ID` y además no hay otras columnas comunes el join se puede simplificar
 
-```{r llaves_2, eval = FALSE}
+
+```r
 clientes %>% left_join(ventas)
 ```
 
@@ -430,7 +431,8 @@ Sobre lo anterior genera otra tabla filtrando los vuelos de *Delta Air Lines Inc
 
 ## Desarrollo Tarea Nº9
 
-```{r tarea_9_1, eval = FALSE}
+
+```r
 flights_db = as_tibble(dbReadTable(nycflights13_db, "flights"))
 airlines_db = as_tibble(dbReadTable(nycflights13_db, "airlines"))
 dbDisconnect(nycflights13_db)
@@ -448,7 +450,8 @@ summary_by_airline = flights_db %>%
 
 ## Desarrollo Tarea Nº9
 
-```{r tarea_9_2, eval = FALSE}
+
+```r
 summary_delta = summary_by_airline %>% 
   ungroup() %>% 
   filter(airline == "Delta Air Lines Inc.") %>% 
@@ -507,7 +510,8 @@ Luego a partir de la tabla:
 
 ## Desarrollo Tarea Nº10
 
-```{r tarea_10_1, eval = FALSE}
+
+```r
 hs92_db = dbConnect(RSQLite::SQLite(), "datasets/lecture2_hs92.sqlite")
 dbListTables(hs92_db)
 
@@ -529,7 +533,8 @@ exports_groups = chl_chn_2014 %>%
 
 ## Desarrollo Tarea Nº10
 
-```{r tarea_10_2, eval = FALSE}
+
+```r
 exports_groups %>% 
   group_by(group_name) %>% 
   mutate(pos = cumsum(0.5 * as.numeric(export_val))) %>% 

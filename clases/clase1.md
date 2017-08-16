@@ -1,5 +1,5 @@
 ---
-title: "Procesamiento y Análisis de Datos 1"
+title: "Procesamiento y Análisis de Datos (Clase 1)"
 subtitle: "Mini-curso de R para usuarios de Excel"
 author1: "Profesor: Mauricio Vargas Sepúlveda"
 author2: "Ayudantes: Maximiliano Diener, Teresa Valdivia, José Vinés"
@@ -16,21 +16,7 @@ mode: selfcontained # {standalone, draft}
 knit : slidify::knit2slides
 ---
 
-```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
-library(knitr) 
-options(width = 100)
-opts_chunk$set(cache = F, message = F, error = F, warning = F, comment = NA, tidy = F, fig.path = 'fig/', fig.align = 'center')
 
-options(xtable.type = 'html')
-knit_hooks$set(inline = function(x) {
-  if(is.numeric(x)) {
-    round(x, getOption('digits'))
-  } else {
-    paste(as.character(x), collapse = ', ')
-  }
-})
-knit_hooks$set(plot = knitr:::hook_plot_html)
-```
 
 # Introducción
 
@@ -221,7 +207,8 @@ Supongamos que `arriendos_por_region.csv` contiene 300 observaciones (100 por re
 
 <br>El arriendo y sueldo promedio ordenado en una tabla de 3x3 de menos a más sería:
 
-```{r ejemplo_dplyr, eval = FALSE}
+
+```r
 read_csv("arriendos_por_region.csv") %>% 
   group_by(X1) %>% # agrupar por región
   summarise(sueldo_promedio = mean(X2),
@@ -246,7 +233,8 @@ Ve a File &rarr; New &rarr; RScript para ir anotando lo que veremos a continuaci
 
 Ejecuta el siguiente código haciendo click en Run o presionando Ctrl/Cmd+Enter:
 
-```{r tarea_1_1, eval = FALSE}
+
+```r
 ### instalar y cargar pacman usando Base R
 if (!require("pacman")) install.packages("pacman")
 
@@ -276,7 +264,8 @@ Pasos a seguir:
 
 ### Paso 3:
 
-```{r tarea_2_3, eval = FALSE}
+
+```r
 mpg %>% 
   filter(year > 2000,
          cyl == 4)
@@ -288,7 +277,8 @@ mpg %>%
 
 ### Paso 4:
 
-```{r tarea_2_4, eval = FALSE}
+
+```r
 mpg %>% 
   arrange(trans)
 
@@ -307,7 +297,8 @@ mpg %>%
 
 ### Paso 5:
 
-```{r tarea_2_5, eval = FALSE}
+
+```r
 mpg %>% 
   filter(year == 2008, cyl == 4) %>% 
   arrange(cty)
@@ -334,7 +325,8 @@ Pasos a seguir:
 
 ¡No olvidar ir guardando los cambios!
 
-```{r tarea_3_1, eval = FALSE}
+
+```r
 folder = "datasets/"
 file = paste0(folder,"lecture1_officesupplies.xlsx") 
 ### "paste0" pega elementos sin espacios
@@ -355,7 +347,8 @@ if(!file.exists(file)) {
 
 ### Paso 2:
 
-```{r tarea_3_2, eval = FALSE}
+
+```r
 officesupplies = read_excel(file)
 
 ### vista rápida de las columnas
@@ -377,7 +370,8 @@ officesupplies %>% select(Item) %>% distinct()
 
 ### Paso 2 (continuación):
 
-```{r tarea_3_3, eval = FALSE}
+
+```r
 ### unidades totales por región
 officesupplies %>% 
   select(Region,Units) %>%
@@ -403,7 +397,8 @@ officesupplies %>%
 
 ### Paso 3:
 
-```{r tarea_3_4, eval = FALSE}
+
+```r
 ### ingreso por región e item
 officesupplies %>% 
   select(Region,Item,Units,`Unit Price`) %>% 
@@ -416,7 +411,8 @@ officesupplies %>%
 
 ### Paso 4:
 
-```{r tarea_3_5, eval = FALSE}
+
+```r
 officesupplies = officesupplies %>% 
   select(Region,Item,Units,`Unit Price`) %>% 
   rename(Unit_Price = `Unit Price`) %>% 
@@ -448,7 +444,8 @@ Pasos a seguir:
 
 ### Paso 1:
 
-```{r tarea_4_1, eval = FALSE}
+
+```r
 folder = "datasets/"
 file = paste0(folder,"lecture1_copper.csv") 
 ### "paste0" pega elementos sin espacios
@@ -469,7 +466,8 @@ if(!file.exists(file)) {
 
 ### Paso 2:
 
-```{r tarea_4_2, eval = FALSE}
+
+```r
 copper = read_csv(file)
 
 ### vista rápida de las columnas
@@ -487,7 +485,8 @@ copper = copper %>%
 
 ### Paso 3:
 
-```{r tarea_4_3, eval = FALSE}
+
+```r
 copper %>% 
   ggplot(aes(y = export, x = year, colour = product)) + 
   geom_line(size = 1.5) + 
@@ -511,7 +510,8 @@ A partir de lo anterior crea un gráfico de área y luego un gráfico de área y
 
 ### Parte 1:
 
-```{r tarea_5_1, eval = FALSE}
+
+```r
 copper %>% 
   ggplot(aes(y = export, x = year, fill = product)) + 
   geom_area() + 
@@ -529,7 +529,8 @@ copper %>%
 
 ### Parte 2:
 
-```{r tarea_5_2, eval = FALSE}
+
+```r
 copper %>% 
   ggplot(aes(y = export, x = year, fill = fct_rev(product))) + 
   geom_area() + 
@@ -547,7 +548,8 @@ copper %>%
 
 ### Parte 3:
 
-```{r tarea_5_3, eval = FALSE}
+
+```r
 copper %>%
   ggplot(aes(y = export, x = year, fill = fct_rev(product))) + 
   geom_col() + 
@@ -574,7 +576,8 @@ Ahora mejora el gráfico de barras anterior:
 
 ### Parte 1:
 
-```{r tarea_6_1, eval = FALSE}
+
+```r
 chart = copper %>%
   group_by(year) %>% 
   mutate(pos = cumsum(export) - (0.5 * export)) %>% 
@@ -595,7 +598,8 @@ chart = copper %>%
 
 ### Parte 2:
 
-```{r tarea_6_2, eval = FALSE}
+
+```r
 chart +
   scale_fill_manual(values = c("#b2d183","#40b8d0")) + 
   theme_bw() +

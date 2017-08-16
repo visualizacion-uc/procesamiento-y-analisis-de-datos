@@ -1,0 +1,158 @@
+---
+title: "Guía de Ejercicios"
+author: "Profesor: Mauricio Vargas Sepúlveda<br>
+Ayudantes: Maximiliano Diener, Teresa Valdivia, José Vinés"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+[Borren las partes que tienen [] al completar sus desarrollos, en adelante [] contendrá una instrucción o explicación]
+
+[Edite el encabezado del presente documento, incluya su nombre y el de sus compañeros.]
+
+[Pueden dividir las preguntas de a uno, dos, tres o más integrantes sin restricciones. No hay preguntas más difíciles que otras.]
+
+# Pregunta 1
+
+```{r pregunta1}
+library(dplyr)
+library(ggplot2)
+library(forcats)
+library(readr)
+```
+
+# Pregunta 2
+
+```{r pregunta2}
+mpg
+```
+
+# Pregunta 3
+
+Hay que cambiar `eval = F` por `eval = T`
+
+```{r pregunta3, eval = T}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+# Pregunta 4
+
+Puede ser el el primer o el cuarto gráfico ya que se usa una variable cualitativa como diferenciador en las observaciones. Sin embargo, el cuarto gráfico no es claro y se pierde un grupo por lo que se descarta.
+
+```{r pregunta4}
+# opcion 1
+ggplot(mpg) + geom_point(aes(x = displ, y = hwy, color = class))
+```
+
+# Pregunta 5
+
+```{r pregunta5}
+ggplot(data = mpg) +
+  geom_boxplot(mapping = aes(x = class, y = hwy))
+```
+
+# Pregunta 6
+
+```{r pregunta6}
+ggplot(data = mpg) +
+  geom_histogram(mapping = aes(x = hwy))
+```
+
+# Pregunta 7
+
+```{r pregunta7}
+ggplot(data = mpg) +
+  geom_density(mapping = aes(x = hwy, color = class))
+```
+
+# Pregunta 8
+
+```{r pregunta8}
+ggplot(data = mpg) +
+  geom_bar(mapping = aes(x = class, fill = class))
+```
+
+# Pregunta 9
+
+La primera línea hace referencia al dataset que contiene las variables que se utilizan en las lineas siguientes.
+
+La línea dos crea un gráfico de puntos.
+
+La línea tres agrega una línea de tendencia sobre lo anterior.
+
+# Pregunta 10
+
+```{r pregunta10}
+# install.packages("babynames")
+library(babynames)
+babynames
+```
+
+# Pregunta 11
+
+```{r pregunta11}
+babynames %>%
+  filter(name == "Khaleesi") %>%
+  summarise(total = sum(n), first = min(year))
+```
+
+# Pregunta 12
+
+```{r pregunta12}
+babynames %>%
+  group_by(name, sex) %>%
+  summarise(total = sum(n)) %>%
+  arrange(desc(total)) %>%
+  ungroup() %>%
+  slice(1:10) %>%
+  ggplot() +
+    geom_col(mapping = aes(x = fct_reorder(name,
+desc(total)), y = total, fill = sex)) +
+    theme_bw() +
+    scale_fill_brewer() +
+    labs(x = "name")
+```
+
+# Pregunta 13
+
+```{r pregunta13}
+babynames %>%
+  group_by(year) %>%
+  summarise(n_children = sum(n)) %>%
+  ggplot() +
+    geom_line(mapping = aes(x = year, y = n_children))
+```
+
+# Pregunta 14
+
+```{r pregunta14}
+superheroes = "
+    name, alignment, gender,         publisher
+ Magneto,       bad,   male,            Marvel
+   Storm,      good, female,            Marvel
+Mystique,       bad, female,            Marvel
+  Batman,      good,   male,                DC
+   Joker,       bad,   male,                DC
+Catwoman,       bad, female,                DC
+ Hellboy,      good,   male, Dark Horse Comics
+"
+superheroes = read_csv(superheroes, trim_ws = TRUE, skip = 1)
+
+publishers = "
+  publisher, yr_founded
+         DC,       1934
+     Marvel,       1939
+      Image,       1992
+"
+publishers = read_csv(publishers, trim_ws = TRUE, skip = 1)
+
+left_join(superheroes,publishers)
+inner_join(superheroes,publishers)
+anti_join(superheroes,publishers)
+semi_join(publishers,superheroes)
+full_join(superheroes,publishers)
+```

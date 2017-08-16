@@ -12,12 +12,9 @@ Ayudantes: Maximiliano Diener, Teresa Valdivia y José Vinés
 
 ## Clases
 
-* [Clase 1](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/lectures/lecture1.html)
-* [Clase 2](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/lectures/lecture2.html)
-
-## Clase Auxiliar
-
-* _Pendiente_
+* [Clase 1](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/clases/clase1.html)
+* [Clase 2](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/clases/clase2.html)
+* [Clase 3](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/clases/clase3.html)
 
 ## Contenidos
 

@@ -1,0 +1,166 @@
+---
+title: "Guía de Ejercicios"
+author: "Profesor: Mauricio Vargas Sepúlveda<br>
+Ayudantes: Maximiliano Diener, Teresa Valdivia, José Vinés"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+[Borren las partes que tienen [] al completar sus desarrollos, en adelante [] contendrá una instrucción o explicación]
+
+[Creen un proyecto compartido en RStudio Server y guarden este documento editable en el directorio del proyecto]
+
+[Editen el encabezado del presente documento, incluyan sus nombres y generen un documento HTML a partir de este archivo]
+
+# Pregunta 1
+
+Carguen las librerías `dplyr`, `ggplot2`, `forcats` y `readr`.
+
+```{r pregunta1}
+# [insertar codigo]
+```
+
+# Pregunta 2
+
+Muestren las primeras observaciones del dataset `mpg`.
+
+```{r pregunta2}
+# [insertar codigo]
+```
+
+# Pregunta 3
+
+Conviertan el siguiente código en ejecutable:
+
+```{r pregunta3, eval = F}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+# Pregunta 4
+
+Seleccionen uno (y sólo uno de los siguientes gráficos), expliquen la relación entre `displ` y `hwy` y por qué el gráfico elegido es más indicado que los otros:
+
+```{r pregunta4, eval = F}
+ggplot(mpg) + geom_point(aes(x = displ, y = hwy, color = class))
+ggplot(mpg) + geom_point(aes(x = displ, y = hwy, size = class))
+ggplot(mpg) + geom_point(aes(x = displ, y = hwy, shape = class))
+ggplot(mpg) + geom_point(aes(x = displ, y = hwy, alpha = class))
+```
+
+# Pregunta 5
+
+Conviertan el siguiente gráfico en un histograma:
+
+```{r pregunta5, eval = F}
+ggplot(mpg) + geom_point(aes(class, hwy))
+```
+
+# Pregunta 6
+
+Construyan un histograma de la variable `hwy`
+
+**Pista: Hay que definir solo la variable del eje "x"**
+
+```{r pregunta6, eval = F}
+# [insertar codigo]
+```
+
+# Pregunta 7
+
+Construyan un gráfico de densidad de la variable `hwy` coloreado de acuerdo a la variable `class`
+
+```{r pregunta7, eval = F}
+# [insertar codigo]
+```
+
+# Pregunta 8
+
+Construyan un gráfico de barras de la variable `hwy` coloreado de acuerdo a la variable `class`
+
+```{r pregunta8, eval = F}
+# [insertar codigo]
+```
+
+# Pregunta 9
+
+Expliquen qué hace cada línea del siguiente código y luego explica el gráfico resultante:
+
+```{r pregunta9, eval = F}
+ggplot(mpg) +
+   geom_point(aes(displ, hwy)) +
+   geom_smooth(aes(displ, hwy))
+```
+
+# Pregunta 10
+
+Agreguen una (y sólo una) línea al siguiente código para ver las primeras observaciones del dataset `babynames`
+
+```{r pregunta10, eval = F}
+# install.packages("babynames")
+library(babynames)
+```
+
+# Pregunta 11
+
+En el dataset `babynames` filtren los que correspondan al nombre `Khaleesi`. Luego usa la función `summarise()` para encontrar:
+
+1. El total de bebés que se llaman Khaleesi
+2. El primer año que Khaleesi aparece
+
+```{r pregunta11, eval = F}
+# [insertar codigo]
+```
+
+# Pregunta 12
+
+Creen un gráfico de barras descendente con los 10 nombres que más se repiten.
+
+```{r pregunta12, eval = F}
+# [insertar codigo]
+```
+
+# Pregunta 13
+
+Grafiquen la cantidad de niños nacidos por año.
+
+```{r pregunta13, eval = F}
+# [insertar codigo]
+```
+
+# Pregunta 14
+
+A partir de los siguientes datos:
+
+```{r pregunta14, eval = F}
+superheroes = "
+    name, alignment, gender,         publisher
+ Magneto,       bad,   male,            Marvel
+   Storm,      good, female,            Marvel
+Mystique,       bad, female,            Marvel
+  Batman,      good,   male,                DC
+   Joker,       bad,   male,                DC
+Catwoman,       bad, female,                DC
+ Hellboy,      good,   male, Dark Horse Comics
+"
+superheroes = read_csv(superheroes, trim_ws = TRUE, skip = 1)
+
+publishers = "
+  publisher, yr_founded
+         DC,       1934
+     Marvel,       1939
+      Image,       1992
+"
+publishers = read_csv(publishers, trim_ws = TRUE, skip = 1)
+```
+
+Creen tablas que contengan:
+
+1. Cada superhéroe con el año en que se fundó su editorial.
+2. Las observaciones de `superheroes` tales que la dimensión `publisher` aparece en la tabla `publishers`. ¿Qué ocurre con Hellboy?
+3. Las observaciones de `superheroes` tales que la dimensión `publisher` no aparece en la tabla `publishers`. ¿Qué ocurre con Hellboy?
+4. Las observaciones sin duplicados de `publishers` tales que la dimensión `publisher` aparece en la tabla `superheroes`.
+5. Todos los elementos de `superheroes` y `publishers`.
