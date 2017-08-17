@@ -12,7 +12,7 @@ highlighter: highlight.js
 url:
   assets: ../assets
   lib: ../libraries
-mode: selfcontained # {standalone, draft}
+mode: selfcontained
 knit : slidify::knit2slides
 ---
 
