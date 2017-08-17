@@ -22,7 +22,7 @@ knit : slidify::knit2slides
 
 Abre RStudio Server, ve a File &rarr; New Project, crea un nuevo proyecto con tu nombre en un nuevo directorio (e.g *mauricio_vargas_clase_2*) y crea un nuevo script.
 
-Vamos a usar el archivo [clase2_vuelos.zip](https://goo.gl/UdkDBt) y lo vamos a descargar al directorio "datasets" y leer desde R.
+Vamos a usar el archivo [clase2_vuelos.zip](https://goo.gl/6hTX5o) y lo vamos a descargar al directorio "datasets" y leer desde R.
 
 Pasos a seguir:
 
@@ -54,14 +54,14 @@ p_load(readr,readxl,dplyr,ggplot2,forcats)
 
 ```r
 folder = "datasets/"
-zip    = paste0(folder,"lecture2_flights.zip")
-csv    = paste0(folder,"lecture2_flights.csv")
+zip    = paste0(folder,"clase2_vuelos.zip")
+csv    = paste0(folder,"clase2_vuelos.csv")
 
 try(dir.create(folder))
 
 if(!file.exists(zip)) {
   download.file(
-    "https://goo.gl/UdkDBt",
+    "https://goo.gl/6hTX5o",
     zip)
 }
 

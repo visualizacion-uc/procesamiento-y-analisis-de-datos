@@ -9,13 +9,13 @@ p_load(readr,readxl,dplyr,ggplot2,forcats)
 ### Paso 2:  
   
 folder = "datasets/"
-zip    = paste0(folder,"lecture2_flights.zip")
-csv    = paste0(folder,"lecture2_flights.csv")
+zip    = paste0(folder,"clase2_vuelos.zip")
+csv    = paste0(folder,"clase2_vuelos.csv")
 
 try(dir.create(folder))
 
 if(!file.exists(zip)) {
-  download.file("http://pacha.datawheel.us/teaching/diplomado_uc/datasets/lecture2_flights.zip",zip)
+  download.file("https://goo.gl/6hTX5o",zip)
 }
 
 if(!file.exists(csv)) {

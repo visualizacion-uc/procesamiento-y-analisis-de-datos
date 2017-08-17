@@ -308,7 +308,7 @@ mpg %>%
 
 ## Tarea Nº3
 
-Vamos a usar el archivo [lecture1_officesupplies.xlsx](https://goo.gl/Hj1H6n) y lo vamos a descargar y leer desde R.
+Vamos a usar el archivo [clase1_insumosoficina.xlsx](https://goo.gl/sfFia4) y lo vamos a descargar y leer desde R.
 
 Pasos a seguir:
 
@@ -328,7 +328,7 @@ Pasos a seguir:
 
 ```r
 folder = "datasets/"
-file = paste0(folder,"lecture1_officesupplies.xlsx") 
+file = paste0(folder,"clase1_insumosoficina.xlsx") 
 ### "paste0" pega elementos sin espacios
 ### "paste" agrega espacios
 
@@ -336,7 +336,7 @@ try(dir.create(folder))
 
 if(!file.exists(file)) {
   download.file(
-    "https://goo.gl/Hj1H6n",
+    "https://goo.gl/sfFia4",
     file)
 }
 ```
@@ -424,7 +424,7 @@ officesupplies = officesupplies %>%
 
 ## Tarea Nº4
 
-Vamos a usar el archivo [lecture1_copper.csv](https://goo.gl/GsnrdP) y lo vamos a descargar y leer desde R.
+Vamos a usar el archivo [clase1_cobre.csv](https://goo.gl/vFg7vb) y lo vamos a descargar y leer desde R.
 
 Pasos a seguir:
 
@@ -447,7 +447,7 @@ Pasos a seguir:
 
 ```r
 folder = "datasets/"
-file = paste0(folder,"lecture1_copper.csv") 
+file = paste0(folder,"clase1_cobre.csv") 
 ### "paste0" pega elementos sin espacios
 ### "paste" agrega espacios
 
@@ -455,7 +455,7 @@ try(dir.create(folder))
 
 if(!file.exists(file)) {
   download.file(
-    "https://goo.gl/GsnrdP",
+    "https://goo.gl/vFg7vb",
     file)
 }
 ```

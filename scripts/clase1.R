@@ -44,14 +44,14 @@ mpg %>%
 ### Paso 1:
   
 folder = "datasets/"
-file = paste0(folder,"lecture1_officesupplies.xlsx") 
+file = paste0(folder,"clase1_insumosoficina.xlsx") 
 ### "paste0" pega elementos sin espacios
 ### "paste" agrega espacios
 
 try(dir.create(folder))
 
 if(!file.exists(file)) {
-  download.file("http://pacha.datawheel.us/teaching/diplomado_uc/datasets/lecture1_officesupplies.xlsx",file)
+  download.file("https://goo.gl/sfFia4",file)
 }
 
 ### Paso 2:
@@ -112,14 +112,14 @@ officesupplies = officesupplies %>%
 ### Paso 1:
   
 folder = "datasets/"
-file = paste0(folder,"lecture1_copper.csv") 
+file = paste0(folder,"clase1_cobre.csv") 
 ### "paste0" pega elementos sin espacios
 ### "paste" agrega espacios
 
 try(dir.create(folder))
 
 if(!file.exists(file)) {
-  download.file("http://pacha.datawheel.us/teaching/diplomado_uc/datasets/lecture1_copper.csv",file)
+  download.file("https://goo.gl/vFg7vb",file)
 }
 
 ### Paso 2:

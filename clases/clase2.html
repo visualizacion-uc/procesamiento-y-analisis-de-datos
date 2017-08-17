@@ -53,7 +53,7 @@
   <article data-timings="">
     <p>Abre RStudio Server, ve a File &rarr; New Project, crea un nuevo proyecto con tu nombre en un nuevo directorio (e.g <em>mauricio_vargas_clase_2</em>) y crea un nuevo script.</p>
 
-<p>Vamos a usar el archivo <a href="https://goo.gl/UdkDBt">clase2_vuelos.zip</a> y lo vamos a descargar al directorio &quot;datasets&quot; y leer desde R.</p>
+<p>Vamos a usar el archivo <a href="https://goo.gl/6hTX5o">clase2_vuelos.zip</a> y lo vamos a descargar al directorio &quot;datasets&quot; y leer desde R.</p>
 
 <p>Pasos a seguir:</p>
 
@@ -93,14 +93,14 @@ p_load(readr,readxl,dplyr,ggplot2,forcats)
     <h3>Paso 2:</h3>
 
 <pre><code class="r">folder = &quot;datasets/&quot;
-zip    = paste0(folder,&quot;lecture2_flights.zip&quot;)
-csv    = paste0(folder,&quot;lecture2_flights.csv&quot;)
+zip    = paste0(folder,&quot;clase2_vuelos.zip&quot;)
+csv    = paste0(folder,&quot;clase2_vuelos.csv&quot;)
 
 try(dir.create(folder))
 
 if(!file.exists(zip)) {
   download.file(
-    &quot;https://goo.gl/UdkDBt&quot;,
+    &quot;https://goo.gl/6hTX5o&quot;,
     zip)
 }
 
