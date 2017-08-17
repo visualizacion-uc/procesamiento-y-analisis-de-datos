@@ -5,7 +5,6 @@ author1: "Profesor: Mauricio Vargas Sepúlveda"
 author2: "Ayudantes: Maximiliano Diener, Teresa Valdivia, José Vinés"
 job: "Pontificia Universidad Católica de Chile"
 logo: escudo_uc.svg
-license : by-nc-sa
 hitheme: tomorrow
 framework: io2012
 highlighter: highlight.js
