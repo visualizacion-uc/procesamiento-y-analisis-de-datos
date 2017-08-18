@@ -523,7 +523,7 @@ dbGetQuery(nycflights13_db, &#39;SELECT * FROM airlines WHERE name LIKE &quot;%D
 <li><code>anti_join</code></li>
 </ul>
 
-<p>Por ahora nos centraremos en <code>left_join</code>.</p>
+<p>Nos centraremos en <code>left_join</code>.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -542,12 +542,25 @@ dbGetQuery(nycflights13_db, &#39;SELECT * FROM airlines WHERE name LIKE &quot;%D
 
 <slide class="" id="slide-29" style="background:;">
   <hgroup>
-    <h2>¿Cómo operan los <em>outer_join</em>?</h2>
+    <h2>Lógica de una unión</h2>
   </hgroup>
   <article data-timings="">
-    <p><code>left_join</code>, <code>right_join</code> y <code>full_join</code> son <em>outer joins</em>, conectan dos tablas según sus elementos comunes</p>
+    <p>Veremos la lógica de las uniones por medio de ejemplos.</p>
 
-<p><img src="img/left-join.png" alt="left-join.png" style="width: 100%;"/></p>
+<p>Tengo la siguiente tabla de superhéroes:</p>
+
+<pre><code class="r">superheroes = &quot;
+    name, alignment, gender,         publisher
+ Magneto,       bad,   male,            Marvel
+   Storm,      good, female,            Marvel
+Mystique,       bad, female,            Marvel
+  Batman,      good,   male,                DC
+   Joker,       bad,   male,                DC
+Catwoman,       bad, female,                DC
+ Hellboy,      good,   male, Dark Horse Comics
+&quot;
+superheroes = read_csv(superheroes, trim_ws = TRUE, skip = 1)
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -555,7 +568,92 @@ dbGetQuery(nycflights13_db, &#39;SELECT * FROM airlines WHERE name LIKE &quot;%D
 
 <slide class="" id="slide-30" style="background:;">
   <hgroup>
-    <h2>¿Cómo operan los <em>outer_join</em>?</h2>
+    <h2>Lógica de una unión</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Y la siguiente tabla de editoriales:</p>
+
+<pre><code class="r">publishers = &quot;
+  publisher, yr_founded
+         DC,       1934
+     Marvel,       1939
+      Image,       1992
+&quot;
+publishers = read_csv(publishers, trim_ws = TRUE, skip = 1)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h2>¿Cómo opera un <em>inner_join</em>?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="img/inner-join.png" alt="left-join.png" style="width: 100%;"/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-32" style="background:;">
+  <hgroup>
+    <h2>¿Cómo opera un <em>inner_join</em>?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Si quiero las observaciones de <code>superheroes</code> tales que la dimensión <code>publisher</code> aparece en la tabla <code>publishers</code>:</p>
+
+<pre><code class="r">inner_join(superheroes,publishers)
+</code></pre>
+
+<p>¿Qué ocurre con Hellboy?</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:;">
+  <hgroup>
+    <h2>¿Cómo opera un <em>outer_join</em>?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><code>left_join</code>, <code>right_join</code> y <code>full_join</code> son <em>outer joins</em>, conectan dos tablas según sus elementos comunes</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-34" style="background:;">
+  <hgroup>
+    <h2>¿Cómo opera un <em>left_join</em>?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="img/left-join.png" alt="left-join.png" style="width: 100%;"/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-35" style="background:;">
+  <hgroup>
+    <h2>¿Cómo opera un <em>left_join</em>?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Si quiero una tabla para superhéroe con el año en que se fundó su editorial:</p>
+
+<pre><code class="r">left_join(superheroes,publishers)
+</code></pre>
+
+<p>¿Qué ocurre con Hellboy?</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-36" style="background:;">
+  <hgroup>
+    <h2>¿Cómo opera un <em>right_join</em>?</h2>
   </hgroup>
   <article data-timings="">
     <p><img src="img/right-join.png" alt="right-join.png" style="width: 100%;"/></p>
@@ -564,9 +662,25 @@ dbGetQuery(nycflights13_db, &#39;SELECT * FROM airlines WHERE name LIKE &quot;%D
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-31" style="background:;">
+<slide class="" id="slide-37" style="background:;">
   <hgroup>
-    <h2>¿Cómo operan los <em>outer_join</em>?</h2>
+    <h2>¿Cómo opera un <em>right_join</em>?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Si quiero una tabla para superhéroe con el año en que se fundó su editorial:</p>
+
+<pre><code class="r">right_join(publishers,superheroes)
+</code></pre>
+
+<p>¿Qué ocurre con Hellboy?</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-38" style="background:;">
+  <hgroup>
+    <h2>¿Cómo opera un <em>full_join</em>?</h2>
   </hgroup>
   <article data-timings="">
     <p><img src="img/full-join.png" alt="full-join.png" style="width: 100%;"/></p>
@@ -575,21 +689,69 @@ dbGetQuery(nycflights13_db, &#39;SELECT * FROM airlines WHERE name LIKE &quot;%D
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-32" style="background:;">
+<slide class="" id="slide-39" style="background:;">
   <hgroup>
-    <h1>Conceptos muy básicos de llaves</h1>
+    <h2>¿Cómo opera un <em>full_join</em>?</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>Una <em>llave primaria</em> es un identificador único de una observación en una tabla (e.g. <code>tailnum</code> en la tabla <code>flights</code>)</li>
-<li>Una <em>llave foránea</em> identifica una observación en otra tabla (e.g. <code>carrier</code> en la tabla <code>flights</code> está en correspondencia con <code>carrier</code> en la tabla <code>airlines</code>)</li>
-</ul>
+    <p>Si quiero una tabla con todos los elementos de <code>superheroes</code> y <code>publishers</code>:</p>
+
+<pre><code class="r">full_join(superheroes,publishers)
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-33" style="background:;">
+<slide class="" id="slide-40" style="background:;">
+  <hgroup>
+    <h2>Variaciones de los joins vistos</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Se tienen también <code>anti_join</code> y <code>semi_join</code></p>
+
+<p>Si quiero una tabla con laas observaciones de <code>superheroes</code> tales que la dimensión <code>publisher</code> no aparece en la tabla <code>publishers</code>. </p>
+
+<pre><code class="r">anti_join(superheroes,publishers)
+</code></pre>
+
+<p>Si quiero una tabla con laas observaciones sin duplicados de <code>publishers</code> tales que la dimensión <code>publisher</code> aparece en la tabla <code>superheroes</code>:</p>
+
+<pre><code class="r">semi_join(publishers,superheroes)
+</code></pre>
+
+<p>¿Qué ocurre con Hellboy?</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-41" style="background:;">
+  <hgroup>
+    <h1>Llaves</h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>Conceptos</h2>
+
+<ul>
+<li>Una <em>llave primaria</em> es un identificador único de una observación en una tabla (e.g. <code>tailnum</code> en la tabla <code>flights</code>)</li>
+<li>Una <em>llave foránea</em> identifica una observación en otra tabla (e.g. <code>carrier</code> en la tabla <code>flights</code> está en correspondencia con <code>carrier</code> en la tabla <code>airlines</code>)</li>
+</ul>
+
+<h2>Ejemplos</h2>
+
+<ul>
+<li>Si tengo un listado de automóviles, la patente del vehículo sirve como llave primaria</li>
+<li>El RUN del dueño no sirve ya que puede estar asociado a varios vehículos</li>
+</ul>
+
+<p>Esto ya se vio en la clase del profesor Pablo Paladino.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-42" style="background:;">
   <hgroup>
     <h2>¿Por qué importan las llaves?</h2>
   </hgroup>
@@ -612,7 +774,7 @@ dbGetQuery(nycflights13_db, &#39;SELECT * FROM airlines WHERE name LIKE &quot;%D
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-34" style="background:;">
+<slide class="" id="slide-43" style="background:;">
   <hgroup>
     <h2>Tarea Nº9</h2>
   </hgroup>
@@ -625,7 +787,7 @@ dbGetQuery(nycflights13_db, &#39;SELECT * FROM airlines WHERE name LIKE &quot;%D
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-35" style="background:;">
+<slide class="" id="slide-44" style="background:;">
   <hgroup>
     <h2>Desarrollo Tarea Nº9</h2>
   </hgroup>
@@ -647,7 +809,7 @@ summary_by_airline = flights_db %&gt;%
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-36" style="background:;">
+<slide class="" id="slide-45" style="background:;">
   <hgroup>
     <h2>Desarrollo Tarea Nº9</h2>
   </hgroup>
@@ -669,7 +831,7 @@ ggplot(summary_delta, aes(x = month, y = flights)) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-37" style="background:;">
+<slide class="" id="slide-46" style="background:;">
   <hgroup>
     <h2>Tarea Nº10</h2>
   </hgroup>
@@ -684,7 +846,7 @@ ggplot(summary_delta, aes(x = month, y = flights)) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-38" style="background:;">
+<slide class="" id="slide-47" style="background:;">
   <hgroup>
     <h2>Tarea Nº10</h2>
   </hgroup>
@@ -695,7 +857,7 @@ ggplot(summary_delta, aes(x = month, y = flights)) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-39" style="background:;">
+<slide class="" id="slide-48" style="background:;">
   <hgroup>
     <h2>Tarea Nº10</h2>
   </hgroup>
@@ -713,7 +875,7 @@ ggplot(summary_delta, aes(x = month, y = flights)) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-40" style="background:;">
+<slide class="" id="slide-49" style="background:;">
   <hgroup>
     <h2>Tarea Nº10</h2>
   </hgroup>
@@ -734,7 +896,7 @@ ggplot(summary_delta, aes(x = month, y = flights)) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-41" style="background:;">
+<slide class="" id="slide-50" style="background:;">
   <hgroup>
     <h2>Desarrollo Tarea Nº10</h2>
   </hgroup>
@@ -760,7 +922,7 @@ exports_groups = chl_chn_2014 %&gt;%
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-42" style="background:;">
+<slide class="" id="slide-51" style="background:;">
   <hgroup>
     <h2>Desarrollo Tarea Nº10</h2>
   </hgroup>
@@ -957,86 +1119,140 @@ exports_groups = chl_chn_2014 %&gt;%
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='¿Cómo operan los <em>outer_join</em>?'>
+        data-slide=29 title='Lógica de una unión'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='¿Cómo operan los <em>outer_join</em>?'>
+        data-slide=30 title='Lógica de una unión'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='¿Cómo operan los <em>outer_join</em>?'>
+        data-slide=31 title='¿Cómo opera un <em>inner_join</em>?'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Conceptos muy básicos de llaves'>
+        data-slide=32 title='¿Cómo opera un <em>inner_join</em>?'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='¿Por qué importan las llaves?'>
+        data-slide=33 title='¿Cómo opera un <em>outer_join</em>?'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Tarea Nº9'>
+        data-slide=34 title='¿Cómo opera un <em>left_join</em>?'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Desarrollo Tarea Nº9'>
+        data-slide=35 title='¿Cómo opera un <em>left_join</em>?'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Desarrollo Tarea Nº9'>
+        data-slide=36 title='¿Cómo opera un <em>right_join</em>?'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Tarea Nº10'>
+        data-slide=37 title='¿Cómo opera un <em>right_join</em>?'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Tarea Nº10'>
+        data-slide=38 title='¿Cómo opera un <em>full_join</em>?'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Tarea Nº10'>
+        data-slide=39 title='¿Cómo opera un <em>full_join</em>?'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Tarea Nº10'>
+        data-slide=40 title='Variaciones de los joins vistos'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Desarrollo Tarea Nº10'>
+        data-slide=41 title='Llaves'>
          41
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='Desarrollo Tarea Nº10'>
+        data-slide=42 title='¿Por qué importan las llaves?'>
          42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='Tarea Nº9'>
+         43
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title='Desarrollo Tarea Nº9'>
+         44
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='Desarrollo Tarea Nº9'>
+         45
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=46 title='Tarea Nº10'>
+         46
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=47 title='Tarea Nº10'>
+         47
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=48 title='Tarea Nº10'>
+         48
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=49 title='Tarea Nº10'>
+         49
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=50 title='Desarrollo Tarea Nº10'>
+         50
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=51 title='Desarrollo Tarea Nº10'>
+         51
       </a>
     </li>
   </ul>

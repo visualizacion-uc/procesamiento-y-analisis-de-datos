@@ -12,7 +12,7 @@
 
 <meta name="author" content="Profesor: Mauricio Vargas Sepúlveda  Ayudantes: Maximiliano Diener, Teresa Valdivia, José Vinés" />
 
-<meta name="date" content="2017-08-16" />
+<meta name="date" content="2017-08-17" />
 
 <title>Guía de Ejercicios</title>
 
@@ -72,7 +72,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="inner">
 <h1 class="title toc-ignore">Guía de Ejercicios</h1>
 <h3 class="author">Profesor: Mauricio Vargas Sepúlveda<br> Ayudantes: Maximiliano Diener, Teresa Valdivia, José Vinés</h3>
-<h3 class="date">2017-08-16</h3>
+<h3 class="date">2017-08-17</h3>
 </div>
 </header>
 
@@ -251,6 +251,9 @@ publishers =<span class="st"> </span><span class="kw">read_csv</span>(publishers
 ## 5    Joker       bad   male                DC       1934
 ## 6 Catwoman       bad female                DC       1934
 ## 7  Hellboy      good   male Dark Horse Comics         NA</code></pre>
+</div>
+<div id="pregunta-15" class="section level1">
+<h1>Pregunta 15</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">inner_join</span>(superheroes,publishers)</code></pre></div>
 <pre><code>## Joining, by = &quot;publisher&quot;</code></pre>
 <pre><code>## # A tibble: 6 x 5
@@ -275,6 +278,19 @@ publishers =<span class="st"> </span><span class="kw">read_csv</span>(publishers
 ##       &lt;chr&gt;      &lt;int&gt;
 ## 1    Marvel       1939
 ## 2        DC       1934</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">full_join</span>(superheroes,publishers)</code></pre></div>
+<pre><code>## Joining, by = &quot;publisher&quot;</code></pre>
+<pre><code>## # A tibble: 8 x 5
+##       name alignment gender         publisher yr_founded
+##      &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;             &lt;chr&gt;      &lt;int&gt;
+## 1  Magneto       bad   male            Marvel       1939
+## 2    Storm      good female            Marvel       1939
+## 3 Mystique       bad female            Marvel       1939
+## 4   Batman      good   male                DC       1934
+## 5    Joker       bad   male                DC       1934
+## 6 Catwoman       bad female                DC       1934
+## 7  Hellboy      good   male Dark Horse Comics         NA
+## 8     &lt;NA&gt;      &lt;NA&gt;   &lt;NA&gt;             Image       1992</code></pre>
 </div>
     </section>
   </div>

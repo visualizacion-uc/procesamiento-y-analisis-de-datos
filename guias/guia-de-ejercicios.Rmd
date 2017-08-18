@@ -157,10 +157,13 @@ publishers = "
 publishers = read_csv(publishers, trim_ws = TRUE, skip = 1)
 ```
 
-Creen tablas que contengan:
+Creen una tabla para superhéroe con el año en que se fundó su editorial.
 
-1. Cada superhéroe con el año en que se fundó su editorial.
-2. Las observaciones de `superheroes` tales que la dimensión `publisher` aparece en la tabla `publishers`. ¿Qué ocurre con Hellboy?
-3. Las observaciones de `superheroes` tales que la dimensión `publisher` no aparece en la tabla `publishers`. ¿Qué ocurre con Hellboy?
-4. Las observaciones sin duplicados de `publishers` tales que la dimensión `publisher` aparece en la tabla `superheroes`.
-5. Todos los elementos de `superheroes` y `publishers`.
+# Pregunta 15
+
+Modifiquen el join de la pregunta 14 para obtener los siguientes casos:
+
+1. Las observaciones de `superheroes` tales que la dimensión `publisher` aparece en la tabla `publishers`. ¿Qué ocurre con Hellboy?
+2. Las observaciones de `superheroes` tales que la dimensión `publisher` no aparece en la tabla `publishers`. ¿Qué ocurre con Hellboy?
+3. Las observaciones sin duplicados de `publishers` tales que la dimensión `publisher` aparece en la tabla `superheroes`.
+4. Todos los elementos de `superheroes` y `publishers`.

@@ -151,8 +151,14 @@ publishers = "
 publishers = read_csv(publishers, trim_ws = TRUE, skip = 1)
 
 left_join(superheroes,publishers)
+```
+
+# Pregunta 15
+
+```{r pregunta15}
 inner_join(superheroes,publishers)
 anti_join(superheroes,publishers)
 semi_join(publishers,superheroes)
 full_join(superheroes,publishers)
 ```
+

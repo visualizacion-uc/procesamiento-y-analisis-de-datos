@@ -366,7 +366,7 @@ dbGetQuery(nycflights13_db, 'SELECT * FROM airlines WHERE name LIKE "%Delta%"')
 * `inner_join`
 * `anti_join`
 
-Por ahora nos centraremos en `left_join`.
+Nos centraremos en `left_join`.
 
 ---
 
@@ -376,30 +376,153 @@ Por ahora nos centraremos en `left_join`.
 
 ---
 
-## ¿Cómo operan los *outer_join*?
+## Lógica de una unión
+
+Veremos la lógica de las uniones por medio de ejemplos.
+
+Tengo la siguiente tabla de superhéroes:
+  
+```{r heroes1, eval = F}
+superheroes = "
+    name, alignment, gender,         publisher
+ Magneto,       bad,   male,            Marvel
+   Storm,      good, female,            Marvel
+Mystique,       bad, female,            Marvel
+  Batman,      good,   male,                DC
+   Joker,       bad,   male,                DC
+Catwoman,       bad, female,                DC
+ Hellboy,      good,   male, Dark Horse Comics
+"
+superheroes = read_csv(superheroes, trim_ws = TRUE, skip = 1)
+```
+
+---
+
+## Lógica de una unión
+
+Y la siguiente tabla de editoriales:
+
+```{r heroes2, eval  =F}
+publishers = "
+  publisher, yr_founded
+         DC,       1934
+     Marvel,       1939
+      Image,       1992
+"
+publishers = read_csv(publishers, trim_ws = TRUE, skip = 1)
+```
+
+---
+
+## ¿Cómo opera un *inner_join*?
+
+<img src="img/inner-join.png" alt="left-join.png" style="width: 100%;"/>
+
+---
+
+## ¿Cómo opera un *inner_join*?
+
+Si quiero las observaciones de `superheroes` tales que la dimensión `publisher` aparece en la tabla `publishers`:
+
+```{r heroes3, eval = F}
+inner_join(superheroes,publishers)
+```
+
+¿Qué ocurre con Hellboy?
+
+---
+
+## ¿Cómo opera un *outer_join*?
 
 `left_join`, `right_join` y `full_join` son *outer joins*, conectan dos tablas según sus elementos comunes
+
+---
+
+## ¿Cómo opera un *left_join*?
 
 <img src="img/left-join.png" alt="left-join.png" style="width: 100%;"/>
 
 ---
 
-## ¿Cómo operan los *outer_join*?
+## ¿Cómo opera un *left_join*?
+
+Si quiero una tabla para superhéroe con el año en que se fundó su editorial:
+
+```{r heroes4, eval = F}
+left_join(superheroes,publishers)
+```
+
+¿Qué ocurre con Hellboy?
+
+---
+
+## ¿Cómo opera un *right_join*?
 
 <img src="img/right-join.png" alt="right-join.png" style="width: 100%;"/>
 
 ---
 
-## ¿Cómo operan los *outer_join*?
+## ¿Cómo opera un *right_join*?
+
+Si quiero una tabla para superhéroe con el año en que se fundó su editorial:
+
+```{r heroes5, eval = F}
+right_join(publishers,superheroes)
+```
+
+¿Qué ocurre con Hellboy?
+
+---
+
+## ¿Cómo opera un *full_join*?
 
 <img src="img/full-join.png" alt="full-join.png" style="width: 100%;"/>
 
 ---
 
-# Conceptos muy básicos de llaves
+## ¿Cómo opera un *full_join*?
+
+Si quiero una tabla con todos los elementos de `superheroes` y `publishers`:
+
+```{r heroes6, eval = F}
+full_join(superheroes,publishers)
+```
+
+---
+
+## Variaciones de los joins vistos
+
+Se tienen también `anti_join` y `semi_join`
+
+Si quiero una tabla con laas observaciones de `superheroes` tales que la dimensión `publisher` no aparece en la tabla `publishers`. 
+
+```{r heroes7, eval = F}
+anti_join(superheroes,publishers)
+```
+
+Si quiero una tabla con laas observaciones sin duplicados de `publishers` tales que la dimensión `publisher` aparece en la tabla `superheroes`:
+
+```{r heroes8, eval = F}
+semi_join(publishers,superheroes)
+```
+
+¿Qué ocurre con Hellboy?
+
+---
+
+# Llaves
+
+## Conceptos
 
 * Una *llave primaria* es un identificador único de una observación en una tabla (e.g. `tailnum` en la tabla `flights`)
 * Una *llave foránea* identifica una observación en otra tabla (e.g. `carrier` en la tabla `flights` está en correspondencia con `carrier` en la tabla `airlines`)
+
+## Ejemplos
+
+* Si tengo un listado de automóviles, la patente del vehículo sirve como llave primaria
+* El RUN del dueño no sirve ya que puede estar asociado a varios vehículos
+
+Esto ya se vio en la clase del profesor Pablo Paladino.
 
 ---
 
