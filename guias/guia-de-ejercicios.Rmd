@@ -1,5 +1,6 @@
 ---
 title: "Guía de Ejercicios"
+subtitle: "Manipulación y Visualización de Datos"
 author: "Profesor: Mauricio Vargas Sepúlveda<br>
 Ayudantes: Maximiliano Diener, Teresa Valdivia, José Vinés"
 date: "`r Sys.Date()`"
@@ -14,6 +15,8 @@ output:
 [Creen un proyecto compartido en RStudio Server y guarden este documento editable en el directorio del proyecto]
 
 [Editen el encabezado del presente documento, incluyan sus nombres y generen un documento HTML a partir de este archivo]
+
+[Agreguen títulos siempre que sea necesario]
 
 # Pregunta 1
 
@@ -117,53 +120,8 @@ En el dataset `babynames` filtren los que correspondan al nombre `Khaleesi`. Lue
 
 # Pregunta 12
 
-Creen un gráfico de barras descendente con los 10 nombres que más se repiten.
+Creen un gráfico de barras descendente con los 10 nombres que más se repiten y otro con la cantidad de niños nacidos por año.
 
 ```{r pregunta12, eval = F}
 # [insertar codigo]
 ```
-
-# Pregunta 13
-
-Grafiquen la cantidad de niños nacidos por año.
-
-```{r pregunta13, eval = F}
-# [insertar codigo]
-```
-
-# Pregunta 14
-
-A partir de los siguientes datos:
-
-```{r pregunta14, eval = F}
-superheroes = "
-    name, alignment, gender,         publisher
- Magneto,       bad,   male,            Marvel
-   Storm,      good, female,            Marvel
-Mystique,       bad, female,            Marvel
-  Batman,      good,   male,                DC
-   Joker,       bad,   male,                DC
-Catwoman,       bad, female,                DC
- Hellboy,      good,   male, Dark Horse Comics
-"
-superheroes = read_csv(superheroes, trim_ws = TRUE, skip = 1)
-
-publishers = "
-  publisher, yr_founded
-         DC,       1934
-     Marvel,       1939
-      Image,       1992
-"
-publishers = read_csv(publishers, trim_ws = TRUE, skip = 1)
-```
-
-Creen una tabla para superhéroe con el año en que se fundó su editorial.
-
-# Pregunta 15
-
-Modifiquen el join de la pregunta 14 para obtener los siguientes casos:
-
-1. Las observaciones de `superheroes` tales que la dimensión `publisher` aparece en la tabla `publishers`. ¿Qué ocurre con Hellboy?
-2. Las observaciones de `superheroes` tales que la dimensión `publisher` no aparece en la tabla `publishers`. ¿Qué ocurre con Hellboy?
-3. Las observaciones sin duplicados de `publishers` tales que la dimensión `publisher` aparece en la tabla `superheroes`.
-4. Todos los elementos de `superheroes` y `publishers`.

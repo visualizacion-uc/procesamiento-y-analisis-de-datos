@@ -71,6 +71,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <header>
 <div class="inner">
 <h1 class="title toc-ignore">Guía de Ejercicios</h1>
+<h2 class="subtitle">Manipulación y Visualización de Datos</h2>
 <h3 class="author">Profesor: Mauricio Vargas Sepúlveda<br> Ayudantes: Maximiliano Diener, Teresa Valdivia, José Vinés</h3>
 <h3 class="date">2017-08-17</h3>
 </div>
@@ -160,37 +161,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1>Pregunta 13</h1>
 <p>Grafiquen la cantidad de niños nacidos por año.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># [insertar codigo]</span></code></pre></div>
-</div>
-<div id="pregunta-14" class="section level1">
-<h1>Pregunta 14</h1>
-<p>A partir de los siguientes datos:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">superheroes =<span class="st"> &quot;</span>
-<span class="st">    name, alignment, gender,         publisher</span>
-<span class="st"> Magneto,       bad,   male,            Marvel</span>
-<span class="st">   Storm,      good, female,            Marvel</span>
-<span class="st">Mystique,       bad, female,            Marvel</span>
-<span class="st">  Batman,      good,   male,                DC</span>
-<span class="st">   Joker,       bad,   male,                DC</span>
-<span class="st">Catwoman,       bad, female,                DC</span>
-<span class="st"> Hellboy,      good,   male, Dark Horse Comics</span>
-<span class="st">&quot;</span>
-superheroes =<span class="st"> </span><span class="kw">read_csv</span>(superheroes, <span class="dt">trim_ws =</span> <span class="ot">TRUE</span>, <span class="dt">skip =</span> <span class="dv">1</span>)
-
-publishers =<span class="st"> &quot;</span>
-<span class="st">  publisher, yr_founded</span>
-<span class="st">         DC,       1934</span>
-<span class="st">     Marvel,       1939</span>
-<span class="st">      Image,       1992</span>
-<span class="st">&quot;</span>
-publishers =<span class="st"> </span><span class="kw">read_csv</span>(publishers, <span class="dt">trim_ws =</span> <span class="ot">TRUE</span>, <span class="dt">skip =</span> <span class="dv">1</span>)</code></pre></div>
-<p>Creen tablas que contengan:</p>
-<ol style="list-style-type: decimal">
-<li>Cada superhéroe con el año en que se fundó su editorial.</li>
-<li>Las observaciones de <code>superheroes</code> tales que la dimensión <code>publisher</code> aparece en la tabla <code>publishers</code>. ¿Qué ocurre con Hellboy?</li>
-<li>Las observaciones de <code>superheroes</code> tales que la dimensión <code>publisher</code> no aparece en la tabla <code>publishers</code>. ¿Qué ocurre con Hellboy?</li>
-<li>Las observaciones sin duplicados de <code>publishers</code> tales que la dimensión <code>publisher</code> aparece en la tabla <code>superheroes</code>.</li>
-<li>Todos los elementos de <code>superheroes</code> y <code>publishers</code>.</li>
-</ol>
 </div>
     </section>
   </div>

@@ -1,5 +1,6 @@
 ---
 title: "Guía de Ejercicios"
+subtitle: "Manipulación y Visualización de Datos"
 author: "Profesor: Mauricio Vargas Sepúlveda<br>
 Ayudantes: Maximiliano Diener, Teresa Valdivia, José Vinés"
 date: "`r Sys.Date()`"
@@ -9,15 +10,9 @@ output:
     highlight: github
 ---
 
-[Borren las partes que tienen [] al completar sus desarrollos, en adelante [] contendrá una instrucción o explicación]
-
-[Edite el encabezado del presente documento, incluya su nombre y el de sus compañeros.]
-
-[Pueden dividir las preguntas de a uno, dos, tres o más integrantes sin restricciones. No hay preguntas más difíciles que otras.]
-
 # Pregunta 1
 
-```{r pregunta1}
+```{r pregunta1, message=FALSE}
 library(dplyr)
 library(ggplot2)
 library(forcats)
@@ -36,7 +31,8 @@ Hay que cambiar `eval = F` por `eval = T`
 
 ```{r pregunta3, eval = T}
 ggplot(data = mpg) +
-  geom_point(mapping = aes(x = displ, y = hwy))
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  ggtitle("Rendimiento en autopista (hwy) versus tipo de motor (displ)")
 ```
 
 # Pregunta 4
@@ -45,35 +41,41 @@ Puede ser el el primer o el cuarto gráfico ya que se usa una variable cualitati
 
 ```{r pregunta4}
 # opcion 1
-ggplot(mpg) + geom_point(aes(x = displ, y = hwy, color = class))
+ggplot(mpg) + 
+  geom_point(aes(x = displ, y = hwy, color = class)) +
+  ggtitle("Rendimiento en autopista (hwy) versus tipo de motor (displ)")
 ```
 
 # Pregunta 5
 
 ```{r pregunta5}
 ggplot(data = mpg) +
-  geom_boxplot(mapping = aes(x = class, y = hwy))
+  geom_boxplot(mapping = aes(x = class, y = hwy)) +
+  ggtitle("Rendimiento de en autopista (hwy) por tipo de veh\u00edculo (class)")
 ```
 
 # Pregunta 6
 
 ```{r pregunta6}
 ggplot(data = mpg) +
-  geom_histogram(mapping = aes(x = hwy))
+  geom_histogram(mapping = aes(x = hwy)) +
+  ggtitle("Rendimiento de combustible en autopista (hwy)")
 ```
 
 # Pregunta 7
 
 ```{r pregunta7}
 ggplot(data = mpg) +
-  geom_density(mapping = aes(x = hwy, color = class))
+  geom_density(mapping = aes(x = hwy, color = class)) +
+  ggtitle("Densidad de veh\u00edculos por tipo (class)")
 ```
 
 # Pregunta 8
 
 ```{r pregunta8}
 ggplot(data = mpg) +
-  geom_bar(mapping = aes(x = class, fill = class))
+  geom_bar(mapping = aes(x = class, fill = class)) +
+  ggtitle("Cuenta de veh\u00edculos por tipo (class)")
 ```
 
 # Pregunta 9
@@ -114,51 +116,13 @@ babynames %>%
 desc(total)), y = total, fill = sex)) +
     theme_bw() +
     scale_fill_brewer() +
-    labs(x = "name")
-```
+    labs(x = "name") +
+    ggtitle("Nombres m\u00e9s comunes")
 
-# Pregunta 13
-
-```{r pregunta13}
 babynames %>%
   group_by(year) %>%
   summarise(n_children = sum(n)) %>%
   ggplot() +
-    geom_line(mapping = aes(x = year, y = n_children))
+    geom_line(mapping = aes(x = year, y = n_children)) +
+    ggtitle("Cantidad de ni\u00f1os nacidos por a\u00f1o")
 ```
-
-# Pregunta 14
-
-```{r pregunta14}
-superheroes = "
-    name, alignment, gender,         publisher
- Magneto,       bad,   male,            Marvel
-   Storm,      good, female,            Marvel
-Mystique,       bad, female,            Marvel
-  Batman,      good,   male,                DC
-   Joker,       bad,   male,                DC
-Catwoman,       bad, female,                DC
- Hellboy,      good,   male, Dark Horse Comics
-"
-superheroes = read_csv(superheroes, trim_ws = TRUE, skip = 1)
-
-publishers = "
-  publisher, yr_founded
-         DC,       1934
-     Marvel,       1939
-      Image,       1992
-"
-publishers = read_csv(publishers, trim_ws = TRUE, skip = 1)
-
-left_join(superheroes,publishers)
-```
-
-# Pregunta 15
-
-```{r pregunta15}
-inner_join(superheroes,publishers)
-anti_join(superheroes,publishers)
-semi_join(publishers,superheroes)
-full_join(superheroes,publishers)
-```
-
