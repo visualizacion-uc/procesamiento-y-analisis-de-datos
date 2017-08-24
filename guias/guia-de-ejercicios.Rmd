@@ -90,7 +90,7 @@ Construyan un gráfico de barras de la variable `hwy` coloreado de acuerdo a la 
 
 # Pregunta 9
 
-Expliquen qué hace cada línea del siguiente código y luego explica el gráfico resultante:
+Expliquen qué hace cada línea del siguiente código y luego expliquen el gráfico resultante:
 
 ```{r pregunta9, eval = F}
 ggplot(mpg) +
@@ -109,7 +109,7 @@ library(babynames)
 
 # Pregunta 11
 
-En el dataset `babynames` filtren los que correspondan al nombre `Khaleesi`. Luego usa la función `summarise()` para encontrar:
+En el dataset `babynames` filtren los que correspondan al nombre `Khaleesi`. Luego usen la función `summarise()` para encontrar:
 
 1. El total de bebés que se llaman Khaleesi
 2. El primer año que Khaleesi aparece
