@@ -32,7 +32,7 @@ Hay que cambiar `eval = F` por `eval = T`
 ```{r pregunta3, eval = T}
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy)) +
-  ggtitle("Rendimiento en autopista (hwy) versus tipo de motor (displ)")
+  ggtitle("Rendimiento en autopista (hwy) versus cilindrada (displ)")
 ```
 
 # Pregunta 4
@@ -43,7 +43,7 @@ Puede ser el el primer o el cuarto gráfico ya que se usa una variable cualitati
 # opcion 1
 ggplot(mpg) + 
   geom_point(aes(x = displ, y = hwy, color = class)) +
-  ggtitle("Rendimiento en autopista (hwy) versus tipo de motor (displ)")
+  ggtitle("Rendimiento en autopista (hwy) versus cilindrada (displ)")
 ```
 
 # Pregunta 5
@@ -85,6 +85,15 @@ La primera línea hace referencia al dataset que contiene las variables que se u
 La línea dos crea un gráfico de puntos.
 
 La línea tres agrega una línea de tendencia sobre lo anterior.
+
+```{r pregunta9, eval = T}
+ggplot(mpg) +
+   geom_point(aes(displ, hwy)) +
+   geom_smooth(aes(displ, hwy)) +
+   ggtitle("Rendimiento en autopista (hwy) versus cilindrada (displ)")
+```
+
+Lo que se obtiene es un gráfico de puntos al cuál se agrega una tendencia, la cual nos dice que se espera que un vehículo con una cilindrada muy baja tenga un mejor rendimiento en autopista que uno de alta cilindrada.
 
 # Pregunta 10
 
