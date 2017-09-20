@@ -2,7 +2,7 @@
 
 Módulo _Procesamiento y Análisis de Datos_ del diplomado en [Visualización de Datos](http://diseno.uc.cl/curso/diplomado-en-visualizacion-de-datos/) de la Pontificia Universidad Católica de Chile.
 
-En este repositorio están disponible el material de las clases de cátedra y la clase auxiliar del diplomado. Están disponibles las diapositivas y los scripts para desarrollar los ejercicios vistos en el transcurso del módulo.
+En este repositorio están disponible el material de las clases de cátedra y las clases auxiliares del módulo.
 
 ## Equipo Docente
 
