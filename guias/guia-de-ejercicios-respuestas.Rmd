@@ -10,6 +10,10 @@ output:
     highlight: github
 ---
 
+```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
+knitr::opts_chunk$set(dev = 'svg')
+```
+
 # Pregunta 1
 
 ```{r pregunta1, message=FALSE}
