@@ -1,8 +1,8 @@
 ---
-title: "Guía de Ejercicios"
-subtitle: "Manipulación y Visualización de Datos"
-author: "Profesor: Mauricio Vargas Sepúlveda<br>
-Ayudantes: Maximiliano Diener, Teresa Valdivia, José Vinés"
+title: "Gu\u00eda de Ejercicios (Respuestas)"
+subtitle: "Manipulaci\u00f3n y Visualizaci\u00f3n de Datos"
+author: "Profesor: Mauricio Vargas Sep\u00falveda<br>
+Ayudantes: Maximiliano Diener, Teresa Valdivia, Jos\u00e9 Vin\u00e9s"
 date: "`r Sys.Date()`"
 output:
   prettydoc::html_pretty:
@@ -37,7 +37,7 @@ ggplot(data = mpg) +
 
 # Pregunta 4
 
-Puede ser el el primer o el cuarto gráfico ya que se usa una variable cualitativa como diferenciador en las observaciones. Sin embargo, el cuarto gráfico no es claro y se pierde un grupo por lo que se descarta.
+Puede ser el el primer o el cuarto gr&aacute;fico ya que se usa una variable cualitativa como diferenciador en las observaciones. Sin embargo, el cuarto gr&aacute;fico no es claro y se pierde un grupo por lo que se descarta.
 
 ```{r pregunta4}
 # opcion 1
@@ -80,11 +80,11 @@ ggplot(data = mpg) +
 
 # Pregunta 9
 
-La primera línea hace referencia al dataset que contiene las variables que se utilizan en las lineas siguientes.
+La primera l&iacute;nea hace referencia al dataset que contiene las variables que se utilizan en las lineas siguientes.
 
-La línea dos crea un gráfico de puntos.
+La l&iacute;nea dos crea un gr&aacute;fico de puntos.
 
-La línea tres agrega una línea de tendencia sobre lo anterior.
+La l&iacute;nea tres agrega una l&iacute;nea de tendencia sobre lo anterior.
 
 ```{r pregunta9, eval = T}
 ggplot(mpg) +
@@ -93,7 +93,7 @@ ggplot(mpg) +
    ggtitle("Rendimiento en autopista (hwy) versus cilindrada (displ)")
 ```
 
-Lo que se obtiene es un gráfico de puntos al cuál se agrega una tendencia, la cual nos dice que se espera que un vehículo con una cilindrada muy baja tenga un mejor rendimiento en autopista que uno de alta cilindrada.
+Lo que se obtiene es un gr&aacute;fico de puntos al cu&aacute;l se agrega una tendencia, la cual nos dice que se espera que un veh&iacute;culo con una cilindrada muy baja tenga un mejor rendimiento en autopista que uno de alta cilindrada.
 
 # Pregunta 10
 
@@ -126,7 +126,7 @@ desc(total)), y = total, fill = sex)) +
     theme_bw() +
     scale_fill_brewer() +
     labs(x = "name") +
-    ggtitle("Nombres m\u00e9s comunes")
+    ggtitle("Nombres m\u00e1s comunes")
 
 babynames %>%
   group_by(year) %>%

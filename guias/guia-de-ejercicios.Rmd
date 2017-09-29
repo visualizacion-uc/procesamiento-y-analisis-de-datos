@@ -1,8 +1,8 @@
 ---
-title: "Guía de Ejercicios"
-subtitle: "Manipulación y Visualización de Datos"
-author: "Profesor: Mauricio Vargas Sepúlveda<br>
-Ayudantes: Maximiliano Diener, Teresa Valdivia, José Vinés"
+title: "Gu\u00eda de Ejercicios"
+subtitle: "Manipulaci\u00f3n y Visualizaci\u00f3n de Datos"
+author: "Profesor: Mauricio Vargas Sep\u00falveda<br>
+Ayudantes: Maximiliano Diener, Teresa Valdivia, Jos\u00e9 Vin\u00e9s"
 date: "`r Sys.Date()`"
 output:
   prettydoc::html_pretty:
@@ -10,17 +10,17 @@ output:
     highlight: github
 ---
 
-[Borren las partes que tienen [] al completar sus desarrollos, en adelante [] contendrá una instrucción o explicación]
+[Borren las partes que tienen [] al completar sus desarrollos, en adelante [] contendr&aacute; una instrucci&oacute;n o explicaci&oacute;n]
 
 [Creen un proyecto compartido en RStudio Server y guarden este documento editable en el directorio del proyecto]
 
 [Editen el encabezado del presente documento, incluyan sus nombres y generen un documento HTML a partir de este archivo]
 
-[Agreguen títulos siempre que sea necesario]
+[Agreguen t&iacute;tulos siempre que sea necesario]
 
 # Pregunta 1
 
-Carguen las librerías `dplyr`, `ggplot2`, `forcats` y `readr`.
+Carguen las librer&iacute;as `dplyr`, `ggplot2`, `forcats` y `readr`.
 
 ```{r pregunta1}
 # [insertar codigo]
@@ -36,7 +36,7 @@ Muestren las primeras observaciones del dataset `mpg`.
 
 # Pregunta 3
 
-Conviertan el siguiente código en ejecutable:
+Conviertan el siguiente c&oacute;digo en ejecutable:
 
 ```{r pregunta3, eval = F}
 ggplot(data = mpg) +
@@ -45,7 +45,7 @@ ggplot(data = mpg) +
 
 # Pregunta 4
 
-Seleccionen uno (y sólo uno de los siguientes gráficos), expliquen la relación entre `displ` y `hwy` y por qué el gráfico elegido es más indicado que los otros:
+Seleccionen uno (y s&oacute;lo uno de los siguientes gr&aacute;ficos), expliquen la relaci&oacute;n entre `displ` y `hwy` y por qu&eacute; el gr&aacute;fico elegido es m&aacute;s indicado que los otros:
 
 ```{r pregunta4, eval = F}
 ggplot(mpg) + geom_point(aes(x = displ, y = hwy, color = class))
@@ -56,7 +56,7 @@ ggplot(mpg) + geom_point(aes(x = displ, y = hwy, alpha = class))
 
 # Pregunta 5
 
-Conviertan el siguiente gráfico en un histograma:
+Conviertan el siguiente gr&aacute;fico en un histograma:
 
 ```{r pregunta5, eval = F}
 ggplot(mpg) + geom_point(aes(class, hwy))
@@ -74,7 +74,7 @@ Construyan un histograma de la variable `hwy`
 
 # Pregunta 7
 
-Construyan un gráfico de densidad de la variable `hwy` coloreado de acuerdo a la variable `class`
+Construyan un gr&aacute;fico de densidad de la variable `hwy` coloreado de acuerdo a la variable `class`
 
 ```{r pregunta7, eval = F}
 # [insertar codigo]
@@ -82,7 +82,7 @@ Construyan un gráfico de densidad de la variable `hwy` coloreado de acuerdo a l
 
 # Pregunta 8
 
-Construyan un gráfico de barras de la variable `hwy` coloreado de acuerdo a la variable `class`
+Construyan un gr&aacute;fico de barras de la variable `hwy` coloreado de acuerdo a la variable `class`
 
 ```{r pregunta8, eval = F}
 # [insertar codigo]
@@ -90,7 +90,7 @@ Construyan un gráfico de barras de la variable `hwy` coloreado de acuerdo a la 
 
 # Pregunta 9
 
-Expliquen qué hace cada línea del siguiente código y luego expliquen el gráfico resultante:
+Expliquen qu&eacute; hace cada l&iacute;nea del siguiente c&oacute;digo y luego expliquen el gr&aacute;fico resultante:
 
 ```{r pregunta9, eval = F}
 ggplot(mpg) +
@@ -100,7 +100,7 @@ ggplot(mpg) +
 
 # Pregunta 10
 
-Agreguen una (y sólo una) línea al siguiente código para ver las primeras observaciones del dataset `babynames`
+Agreguen una (y s&oacute;lo una) l&iacute;nea al siguiente c&oacute;digo para ver las primeras observaciones del dataset `babynames`
 
 ```{r pregunta10, eval = F}
 # install.packages("babynames")
@@ -109,10 +109,10 @@ library(babynames)
 
 # Pregunta 11
 
-En el dataset `babynames` filtren los que correspondan al nombre `Khaleesi`. Luego usen la función `summarise()` para encontrar:
+En el dataset `babynames` filtren los que correspondan al nombre `Khaleesi`. Luego usen la funci&oacute;n `summarise()` para encontrar:
 
-1. El total de bebés que se llaman Khaleesi
-2. El primer año que Khaleesi aparece
+1. El total de beb&eacute;s que se llaman Khaleesi
+2. El primer a&ntilde;o que Khaleesi aparece
 
 ```{r pregunta11, eval = F}
 # [insertar codigo]
@@ -120,7 +120,7 @@ En el dataset `babynames` filtren los que correspondan al nombre `Khaleesi`. Lue
 
 # Pregunta 12
 
-Creen un gráfico de barras descendente con los 10 nombres que más se repiten y otro con la cantidad de niños nacidos por año.
+Creen un gr&aacute;fico de barras descendente con los 10 nombres que m&aacute;s se repiten y otro con la cantidad de ni&ntilde;os nacidos por a&ntilde;o.
 
 ```{r pregunta12, eval = F}
 # [insertar codigo]
