@@ -56,7 +56,7 @@ ggplot(mpg) + geom_point(aes(x = displ, y = hwy, alpha = class))
 
 # Pregunta 5
 
-Conviertan el siguiente gr&aacute;fico en un histograma:
+Conviertan el siguiente gr&aacute;fico en un boxplot:
 
 ```{r pregunta5, eval = F}
 ggplot(mpg) + geom_point(aes(class, hwy))
