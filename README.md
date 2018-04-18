@@ -12,15 +12,15 @@ Ayudantes: Maximiliano Diener, Teresa Valdivia y José Vinés
 
 ## Clases
 
-* [Clase 1](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/clases/clase1.html)
-* [Clase 2](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/clases/clase2.html)
+* [Clase 1](https://visualizacionuc.github.io/procesamiento-y-analisis-de-datos/clases/clase1.html)
+* [Clase 2](https://visualizacionuc.github.io/procesamiento-y-analisis-de-datos/clases/clase2.html)
 
 ## Guía de ejercicios
 
-* [Guía de ejercicios (html)](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/guias/guia-de-ejercicios.html)
-* [Guía de ejercicios (rmd)](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/guias/guia-de-ejercicios.Rmd)
-* [Guía de ejercicios (respuestas) (html)](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/guias/guia-de-ejercicios-respuestas.html)
-* [Guía de ejercicios (respuestas) (rmd)](https://visualizacion-uc.github.io/procesamiento-y-analisis-de-datos/guias/guia-de-ejercicios-respuestas.Rmd)
+* [Guía de ejercicios (html)](https://visualizacionuc.github.io/procesamiento-y-analisis-de-datos/guias/guia-de-ejercicios.html)
+* [Guía de ejercicios (rmd)](https://visualizacionuc.github.io/procesamiento-y-analisis-de-datos/guias/guia-de-ejercicios.Rmd)
+* [Guía de ejercicios (respuestas) (html)](https://visualizacionuc.github.io/procesamiento-y-analisis-de-datos/guias/guia-de-ejercicios-respuestas.html)
+* [Guía de ejercicios (respuestas) (rmd)](https://visualizacionuc.github.io/procesamiento-y-analisis-de-datos/guias/guia-de-ejercicios-respuestas.Rmd)
 
 ## Contenidos
 
